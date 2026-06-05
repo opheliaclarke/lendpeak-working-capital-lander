@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0A2540">
+<meta name="robots" content="noindex,nofollow">
+<title>LendPeak — Working Capital Deal Lifecycle | Confidential Briefing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0A2540;--navy-2:#103a66;--blue:#1E63E9;--green:#0FB97D;--green-d:#0a9e6a;
+  --amber:#E8920C;--red:#E1554F;--bg:#EEF3F9;--card:#FFFFFF;--line:#E0E7F1;
+  --text:#0E1B2E;--muted:#5A6B82;--radius:16px;--maxw:1000px;
+  --shadow:0 10px 34px rgba(13,38,76,.09);--shadow-sm:0 4px 14px rgba(13,38,76,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,.dsp{font-family:'Sora',sans-serif;letter-spacing:-.02em;line-height:1.14;color:var(--navy)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.muted{color:var(--muted)}.green{color:var(--green-d)}.amber{color:var(--amber)}.red{color:var(--red)}.blue{color:var(--blue)}
+
+/* classification bar */
+.classbar{background:var(--navy);color:#cfe0f5;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;text-align:center;padding:8px 14px;font-weight:600;position:sticky;top:0;z-index:50}
+.classbar b{color:#fff}
+.classbar .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);margin-right:8px;vertical-align:middle;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+
+/* document cover */
+.cover{background:linear-gradient(160deg,#fff,#f3f7fc);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.cover .wrap{padding:46px 22px 40px;position:relative}
+.brand{display:flex;align-items:center;gap:11px;font-family:'Sora';font-weight:700;font-size:1.3rem;color:var(--navy)}
+.brand .mark{width:38px;height:38px}
+.stamp{position:absolute;top:40px;right:24px;border:3px solid rgba(225,85,79,.55);color:rgba(225,85,79,.85);font-family:'Sora';font-weight:800;letter-spacing:.06em;padding:7px 15px;border-radius:9px;transform:rotate(7deg);font-size:.95rem;text-transform:uppercase;background:rgba(225,85,79,.04)}
+.cover h1{font-size:clamp(1.9rem,4.4vw,2.9rem);font-weight:800;margin-top:28px;max-width:760px}
+.cover .lede{color:var(--muted);font-size:1.1rem;max-width:620px;margin-top:14px}
+.metagrid{display:grid;grid-template-columns:repeat(4,auto);gap:0;margin-top:32px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;width:fit-content;max-width:100%}
+.metagrid div{padding:13px 22px;border-right:1px solid var(--line)}
+.metagrid div:last-child{border-right:0}
+.metagrid .k{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.metagrid .v{font-family:'Sora';font-weight:700;color:var(--navy);font-size:.95rem;margin-top:2px}
+
+/* sections */
+.section{padding:60px 0;position:relative}
+.exhibit{font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green-d);display:inline-flex;align-items:center;gap:9px}
+.exhibit::before{content:"";width:26px;height:2px;background:var(--green)}
+h2.title{font-size:clamp(1.5rem,3.2vw,2.1rem);font-weight:700;margin-top:12px}
+.sub{color:var(--muted);font-size:1.04rem;max-width:660px;margin-top:9px}
+
+[data-animate]{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+[data-animate].in{opacity:1;transform:none}
+.d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}
+
+.persona{display:inline-flex;align-items:center;gap:13px;background:#fff;border:1px solid var(--line);border-radius:50px;padding:9px 20px 9px 9px;margin-top:26px;box-shadow:var(--shadow-sm)}
+.persona .av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#0FB97D,#1E63E9);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Sora';font-weight:800}
+.persona b{font-family:'Sora';color:var(--navy)}
+
+/* FLOW */
+.flow{position:relative;margin-top:42px;padding-left:6px}
+.flow::before{content:"";position:absolute;left:34px;top:18px;bottom:18px;width:3px;background:var(--line);border-radius:3px}
+.flow .linefill{position:absolute;left:34px;top:18px;width:3px;background:linear-gradient(var(--green),var(--blue));border-radius:3px;height:0;transition:height 1.6s ease}
+.flow.in .linefill{height:calc(100% - 36px)}
+.packet{position:absolute;left:29px;width:13px;height:13px;border-radius:50%;background:var(--green);box-shadow:0 0 12px 3px rgba(15,185,125,.6);top:18px;animation:travel 3.6s ease-in-out infinite}
+.flow:not(.in) .packet{display:none}
+@keyframes travel{0%{top:18px;opacity:0}8%{opacity:1}92%{opacity:1}100%{top:calc(100% - 26px);opacity:0}}
+.fstep{position:relative;display:flex;gap:20px;padding:12px 0 24px;align-items:flex-start}
+.fstep .node{flex:none;width:70px;height:70px;border-radius:19px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm);display:flex;align-items:center;justify-content:center;position:relative;z-index:2}
+.fstep .node svg{color:var(--green-d);width:29px;height:29px}
+.fstep .node .step-n{position:absolute;top:-9px;right:-9px;width:25px;height:25px;border-radius:50%;background:var(--blue);color:#fff;font-family:'Sora';font-weight:700;font-size:.78rem;display:flex;align-items:center;justify-content:center}
+.fstep h3{font-size:1.14rem;font-weight:700;padding-top:6px}
+.fstep p{color:var(--muted);font-size:.95rem;margin-top:3px}
+.fstep .tag{display:inline-block;margin-top:8px;font-size:.78rem;font-weight:600;color:var(--green-d);background:rgba(15,185,125,.1);border:1px solid rgba(15,185,125,.25);padding:3px 11px;border-radius:20px}
+
+/* DEAL */
+.deal{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px;margin-top:40px;box-shadow:var(--shadow)}
+.deal-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.dcell{text-align:center;padding:22px 10px;border-radius:13px;background:#f6f9fd}
+.dcell .v{font-family:'Sora';font-weight:800;font-size:1.75rem;color:var(--navy)}
+.dcell.hl{background:rgba(15,185,125,.08)}.dcell.hl .v{color:var(--green-d)}
+.dcell .l{color:var(--muted);font-size:.8rem;margin-top:4px}
+.dcell .op{color:#9aa9bd;font-size:.74rem;margin-top:2px}
+.eq{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:20px;padding-bottom:8px;font-family:'Sora';font-size:1rem}
+.eq b{color:var(--navy)}.eq .x{color:var(--amber)}.eq .arrow{color:var(--muted)}
+
+/* CHART */
+.chartbox{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;margin-top:40px;box-shadow:var(--shadow)}
+.chartbox .head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;margin-bottom:24px}
+.chartbox .head h3{font-size:1.12rem}
+.legend{display:flex;gap:16px;font-size:.82rem;color:var(--muted)}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:middle}
+.bars{display:flex;align-items:flex-end;gap:9px;height:220px;border-bottom:1px solid var(--line)}
+.bar{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;position:relative}
+.bar .col{width:68%;max-width:36px;background:linear-gradient(var(--green),var(--green-d));border-radius:6px 6px 0 0;height:0;transition:height 1s cubic-bezier(.2,.8,.2,1)}
+.bars.in .bar .col{height:var(--h)}
+.bar .bln{position:absolute;width:9px;height:9px;border-radius:50%;background:var(--blue);bottom:var(--b);left:50%;transform:translateX(-50%) scale(0);transition:transform .5s ease;box-shadow:0 0 0 3px rgba(30,99,233,.15)}
+.bars.in .bar .bln{transform:translateX(-50%) scale(1)}
+.bar .mo{position:absolute;bottom:-25px;font-size:.7rem;color:var(--muted)}
+.chartnote{color:var(--muted);font-size:.84rem;margin-top:38px}
+
+/* MODELS */
+.models{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
+.model{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow)}
+.model.fund{border-color:rgba(15,185,125,.45)}
+.model h3{font-size:1.18rem;display:flex;align-items:center;gap:10px}
+.model .pill{font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:20px;background:rgba(15,185,125,.13);color:var(--green-d)}
+.model.arr .pill{background:rgba(232,146,12,.14);color:var(--amber)}
+.model p.desc{color:var(--muted);font-size:.92rem;margin:8px 0 18px}
+.wf{display:flex;flex-direction:column;gap:10px}
+.wfrow{display:grid;grid-template-columns:118px 1fr 88px;align-items:center;gap:11px;font-size:.88rem}
+.wfrow .lbl{color:var(--muted)}
+.wfrow .track{height:28px;background:#eef2f7;border-radius:7px;overflow:hidden}
+.wfrow .fillb{height:100%;width:0;border-radius:7px;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.wf.in .fillb{width:var(--w)}
+.f-green{background:linear-gradient(90deg,#0FB97D,#0a9e6a)}
+.f-blue{background:linear-gradient(90deg,#1E63E9,#1750c4)}
+.f-amber{background:linear-gradient(90deg,#E8920C,#c47a09)}
+.f-red{background:linear-gradient(90deg,#E1554F,#c43d38)}
+.wfrow .amt{text-align:right;font-family:'Sora';font-weight:700;color:var(--navy)}
+.netline{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);display:flex;justify-content:space-between;align-items:center}
+.netline .big{font-family:'Sora';font-weight:800;font-size:1.5rem;color:var(--green-d)}
+.banner{background:rgba(232,146,12,.08);border:1px solid rgba(232,146,12,.3);border-radius:12px;padding:14px 18px;margin-top:22px;font-size:.86rem;color:#8a5a07}
+.banner b{color:#6e4705}
+
+/* FUNNEL */
+.funnel{margin-top:40px;display:grid;gap:9px;max-width:640px;margin-left:auto;margin-right:auto}
+.fn{margin:0 auto;border-radius:9px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;color:#fff;font-weight:600;width:0;opacity:0;transition:width .9s cubic-bezier(.2,.8,.2,1),opacity .6s;white-space:nowrap;box-shadow:var(--shadow-sm)}
+.funnel.in .fn1{width:100%}.funnel.in .fn2{width:83%}.funnel.in .fn3{width:62%}.funnel.in .fn4{width:42%}.funnel.in .fn5{width:26%}
+.funnel.in .fn{opacity:1}
+.fn small{font-weight:500;opacity:.9;font-size:.78rem}
+.fn1{background:#2c5a93}.fn2{background:#1f5db0}.fn3{background:#1565c9}.fn4{background:#0a9e6a}.fn5{background:#0FB97D}
+.roas{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+.roas .rc{background:#fff;border:1px solid var(--line);border-radius:13px;padding:22px;text-align:center;box-shadow:var(--shadow-sm)}
+.roas .rc .v{font-family:'Sora';font-weight:800;font-size:1.6rem}
+.roas .rc .l{color:var(--muted);font-size:.8rem;margin-top:4px}
+
+/* takeaways */
+.take{background:linear-gradient(160deg,#0A2540,#103a66);color:#eaf2ff;border-radius:var(--radius);padding:34px;margin-top:42px;box-shadow:var(--shadow)}
+.take h3{color:#fff;font-size:1.25rem;margin-bottom:15px}
+.take ul{list-style:none;display:grid;gap:12px}
+.take li{display:flex;gap:11px;align-items:flex-start}
+.take li svg{color:#39e0a6;flex:none;margin-top:3px}
+.take li b{color:#fff}
+
+footer{padding:34px 0;color:var(--muted);font-size:.78rem;border-top:1px solid var(--line);margin-top:30px;background:#fff}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;align-items:center}
+footer .brand{font-size:1rem}
+
+@media(max-width:820px){
+  .deal-grid{grid-template-columns:1fr 1fr 1fr}
+  .models{grid-template-columns:1fr}.roas{grid-template-columns:1fr}
+  .metagrid{grid-template-columns:1fr 1fr}.metagrid div:nth-child(2){border-right:0}
+  .stamp{top:20px;right:18px;font-size:.8rem}
+  .dcell .v{font-size:1.45rem}
+}
+@media(max-width:520px){
+  .deal-grid{grid-template-columns:1fr 1fr}
+  .wfrow{grid-template-columns:90px 1fr 70px;font-size:.8rem}
+  .fstep .node{width:58px;height:58px}
+  .flow::before,.flow .linefill{left:28px}.packet{left:23px}
+  .bars{gap:4px}.bar .mo{font-size:.58rem}
+}
+</style>
+</head>
+<body>
+
+<div class="classbar"><span class="dot"></span> Confidential · Prepared for <b>LendPeak</b> · Do Not Distribute</div>
+
+<!-- COVER -->
+<header class="cover">
+  <div class="wrap">
+    <div class="stamp">Confidential</div>
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="11" fill="#0FB97D"/><path d="M8 28L17 14l6 8 3-4 6 10H8z" fill="#fff"/><circle cx="29" cy="12" r="3" fill="#fff"/></svg>
+      LendPeak
+    </div>
+    <h1 data-animate>Working Capital — Anatomy of a Funded Deal</h1>
+    <p class="lede" data-animate class="d1">An evidence-based walkthrough of a single merchant cash advance: how the customer is acquired, the terms they settle on, how repayment unfolds, and precisely how revenue is earned.</p>
+    <div class="metagrid" data-animate>
+      <div><div class="k">Prepared for</div><div class="v">LendPeak</div></div>
+      <div><div class="k">Division</div><div class="v">Working Capital</div></div>
+      <div><div class="k">Reference</div><div class="v">LP-WC-001</div></div>
+      <div><div class="k">Classification</div><div class="v" style="color:var(--red)">Confidential</div></div>
+    </div>
+    <div class="persona" data-animate>
+      <div class="av">MR</div>
+      <div style="text-align:left;font-size:.92rem"><b>Case study: Maria's Diner</b> — Columbus, OH<br><span class="muted">Walk-in cooler failed. Capital required: $50,000.</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- EXHIBIT 1 — JOURNEY -->
+<section class="section wrap">
+  <span class="exhibit" data-animate>Exhibit 1 — Customer Acquisition Path</span>
+  <h2 class="title" data-animate>From Google search to funded, in six steps</h2>
+  <p class="sub" data-animate>Every customer travels this path. Steps 1–2 are the portion our Google Ads program is engineered to drive and measure.</p>
+
+  <div class="flow" data-animate>
+    <div class="linefill"></div><div class="packet"></div>
+    <div class="fstep"><div class="node"><span class="step-n">1</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.8l-.3-.3a6.5 6.5 0 10-.7.7l.3.3v.8l5 5 1.5-1.5-5-5zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14z"/></svg></div><div><h3>Searches Google &amp; clicks our ad</h3><p>Maria searches "restaurant funding fast" and clicks the LendPeak ad. <b class="blue">This is where the PPC program begins.</b></p><span class="tag">Ad click</span></div></div>
+    <div class="fstep"><div class="node"><span class="step-n">2</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-9 14l-5-5 1.4-1.4L10 14.2l7.6-7.6L19 8z"/></svg></div><div><h3>Pre-qualifies in 60 seconds</h3><p>On the landing page she submits amount, revenue, time in business and credit — a soft pull, no score impact. A <b>lead</b> is created with her Google Click ID attached.</p><span class="tag">Lead + GCLID captured</span></div></div>
+    <div class="fstep"><div class="node"><span class="step-n">3</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.2 2.2z"/></svg></div><div><h3>Specialist reviews &amp; calls</h3><p>LendPeak verifies bank statements and confirms she qualifies (3 yrs in business, $90K/mo sales, 610 credit).</p><span class="tag">Qualified</span></div></div>
+    <div class="fstep"><div class="node"><span class="step-n">4</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg></div><div><h3>Settles terms &amp; e-signs</h3><p>She accepts a <b class="green">$50,000 advance</b> at a <b class="green">1.30 factor rate</b>. Every cost is disclosed before signature.</p><span class="tag">Contract executed</span></div></div>
+    <div class="fstep"><div class="node"><span class="step-n">5</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1v6m0 10v6M4.9 4.9l4.2 4.2m5.8 5.8l4.2 4.2M1 12h6m10 0h6M4.9 19.1l4.2-4.2m5.8-5.8l4.2-4.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><div><h3>Funded within 24 hours</h3><p>$50,000 is disbursed to her business account. New cooler installed by the weekend.</p><span class="tag">$50,000 disbursed</span></div></div>
+    <div class="fstep"><div class="node"><span class="step-n">6</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 1v2.1A5 5 0 007 8c0 2.5 2 3.6 4.3 4.3 1.7.5 2.7.9 2.7 1.9 0 .9-1 1.6-2.5 1.6-1.4 0-2.5-.7-2.6-1.8H6.7c.1 2.1 1.7 3.4 3.8 3.8V21h2v-2.2c2.3-.4 3.9-1.8 3.9-4 0-2.8-2.4-3.7-4.6-4.3-2.2-.6-2.4-1.1-2.4-1.7 0-.8.7-1.5 2.3-1.5 1.5 0 2.3.7 2.3 1.7h2.3c-.1-1.9-1.4-3.2-3.4-3.6V1h-2z"/></svg></div><div><h3>Repays from sales → revenue earned</h3><p>A small slice of each day's sales repays the advance until <b class="green">$65,000</b> is collected. The difference is LendPeak's margin.</p><span class="tag">Repayment + profit</span></div></div>
+  </div>
+</section>
+
+<!-- EXHIBIT 2 — TERMS -->
+<section class="section wrap">
+  <span class="exhibit" data-animate>Exhibit 2 — Settled Terms</span>
+  <h2 class="title" data-animate>The economics of the agreement</h2>
+  <p class="sub" data-animate>An MCA is priced with a flat <b class="green">factor rate</b>, not an interest rate. Advance × factor = total repayment. The spread is the cost of capital.</p>
+  <div class="deal" data-animate>
+    <div class="deal-grid">
+      <div class="dcell"><div class="v" data-count="50000" data-prefix="$">$0</div><div class="l">Advance amount</div><div class="op">cash to merchant</div></div>
+      <div class="dcell"><div class="v" data-count="1.30" data-dec="2">0</div><div class="l">Factor rate</div><div class="op">× multiplier</div></div>
+      <div class="dcell hl"><div class="v" data-count="65000" data-prefix="$">$0</div><div class="l">Total repayment</div><div class="op">receivables purchased</div></div>
+      <div class="dcell"><div class="v" data-count="12">0</div><div class="l">Est. term (months)</div><div class="op">flexes with sales</div></div>
+      <div class="dcell"><div class="v" data-count="258" data-prefix="$">$0</div><div class="l">Per business day</div><div class="op">~6% of daily sales</div></div>
+    </div>
+    <div class="eq"><b>$50,000</b> <span class="x">×</span> <b>1.30</b> <span class="arrow">→</span> <b class="green">$65,000 repaid</b> <span class="arrow">=</span> <b class="amber">$15,000 margin</b></div>
+  </div>
+</section>
+
+<!-- EXHIBIT 3 — REPAYMENT -->
+<section class="section wrap">
+  <span class="exhibit" data-animate>Exhibit 3 — Repayment Schedule</span>
+  <h2 class="title" data-animate>How the $65,000 is recovered</h2>
+  <p class="sub" data-animate>Approximately $5,417 per month (~$258 per business day) is collected as a percentage of sales. The outstanding balance amortizes to zero over roughly twelve months.</p>
+  <div class="chartbox" data-animate>
+    <div class="head"><h3>Monthly collections &amp; remaining balance</h3><div class="legend"><span><i style="background:#0FB97D"></i>Collected / month</span><span><i style="background:#1E63E9"></i>Balance remaining</span></div></div>
+    <div class="bars" id="repayBars"></div>
+    <p class="chartnote">Each green bar ≈ $5,417 collected that month; blue markers trace the balance falling from $65,000 → $0. Busy months repay faster, slow months slower — the term flexes with the merchant's revenue.</p>
+  </div>
+</section>
+
+<!-- EXHIBIT 4 — REVENUE MODEL -->
+<section class="section wrap">
+  <span class="exhibit" data-animate>Exhibit 4 — Revenue Model</span>
+  <h2 class="title" data-animate>How LendPeak earns on this deal</h2>
+  <p class="sub" data-animate>Two routes to revenue, both originating from the same $15,000 factor-rate margin.</p>
+  <div class="models">
+    <div class="model fund" data-animate>
+      <h3><span class="pill">Model A</span> Funds the deal</h3>
+      <p class="desc">LendPeak deploys its own capital — buying $65,000 of receivables for $50,000. It keeps the full margin but carries the risk and the collection period.</p>
+      <div class="wf" id="wfFund">
+        <div class="wfrow"><span class="lbl">Merchant repays</span><div class="track"><div class="fillb f-green" style="--w:100%"></div></div><span class="amt green">$65,000</span></div>
+        <div class="wfrow"><span class="lbl">− Capital out</span><div class="track"><div class="fillb f-blue" style="--w:77%"></div></div><span class="amt blue">−$50,000</span></div>
+        <div class="wfrow"><span class="lbl">= Gross margin</span><div class="track"><div class="fillb f-amber" style="--w:23%"></div></div><span class="amt amber">$15,000</span></div>
+        <div class="wfrow"><span class="lbl">− Acquisition</span><div class="track"><div class="fillb f-red" style="--w:2.3%"></div></div><span class="amt red">−$1,500</span></div>
+        <div class="wfrow"><span class="lbl">− Cost + risk*</span><div class="track"><div class="fillb f-red" style="--w:5.4%"></div></div><span class="amt red">−$3,500</span></div>
+      </div>
+      <div class="netline"><span class="muted">Net profit / deal</span><span class="big">≈ $10,000</span></div>
+      <p class="muted" style="font-size:.74rem;margin-top:9px">*Cost of capital + reserve for defaults. Earned over ~12 months.</p>
+    </div>
+    <div class="model arr d1" data-animate>
+      <h3><span class="pill">Model B</span> Arranges the deal</h3>
+      <p class="desc">LendPeak originates and places the deal with a funding partner, earning upfront <b>commission "points"</b> — typically 8–15% of the funded amount. No capital, no wait, no default risk.</p>
+      <div class="wf" id="wfArr">
+        <div class="wfrow"><span class="lbl">Funded amount</span><div class="track"><div class="fillb f-green" style="--w:100%"></div></div><span class="amt green">$50,000</span></div>
+        <div class="wfrow"><span class="lbl">Commission @10%</span><div class="track"><div class="fillb f-amber" style="--w:10%"></div></div><span class="amt amber">$5,000</span></div>
+        <div class="wfrow"><span class="lbl">− Acquisition</span><div class="track"><div class="fillb f-red" style="--w:3%"></div></div><span class="amt red">−$1,500</span></div>
+      </div>
+      <div class="netline"><span class="muted">Net profit / deal</span><span class="big" style="color:var(--amber)">≈ $3,500</span></div>
+      <p class="muted" style="font-size:.74rem;margin-top:9px">Paid within days of funding. Lower per-deal, zero risk — so volume scales quickly.</p>
+    </div>
+  </div>
+  <div class="banner" data-animate>LendPeak's published disclosures reference third-party lenders — indicating <b>Model B (commission)</b> on many deals, and/or Model A on others. Either way the engine is identical: <b>advertising creates funded deals, and each funded deal returns multiples of its acquisition cost.</b></div>
+</section>
+
+<!-- EXHIBIT 5 — UNIT ECONOMICS -->
+<section class="section wrap">
+  <span class="exhibit" data-animate>Exhibit 5 — Unit Economics &amp; Acquisition</span>
+  <h2 class="title" data-animate>What it costs to originate one funded deal</h2>
+  <p class="sub" data-animate>This is the rationale for optimizing the Google Ads program to <b class="green">funded deals</b> rather than raw leads.</p>
+  <div class="funnel" data-animate>
+    <div class="fn fn1">125 ad clicks <small>≈ $1,500 spend @ ~$12 CPC</small></div>
+    <div class="fn fn2">25 leads <small>20% of clicks pre-qualify</small></div>
+    <div class="fn fn3">7 qualified <small>pass underwriting basics</small></div>
+    <div class="fn fn4">2 approved offers <small>specialist closes</small></div>
+    <div class="fn fn5">1 funded deal <small>contract signed</small></div>
+  </div>
+  <div class="roas">
+    <div class="rc" data-animate><div class="v red" data-count="1500" data-prefix="$">$0</div><div class="l">Acquisition cost / funded deal</div></div>
+    <div class="rc d1" data-animate><div class="v amber" data-count="5000" data-prefix="$">$0</div><div class="l">Revenue (commission model)</div></div>
+    <div class="rc d2" data-animate><div class="v green" data-count="3.3" data-dec="1" data-suffix="×">0</div><div class="l">Return on ad spend (minimum)</div></div>
+  </div>
+  <p class="sub" style="margin-top:20px" data-animate>Under the funding model the same $1,500 returns <b class="green">~$15,000 gross — a 10× return.</b> Feeding Google the verified "funded" signal teaches the algorithm to pursue high-value applicants and suppress non-converting traffic.</p>
+</section>
+
+<!-- TAKEAWAYS -->
+<section class="section wrap">
+  <div class="take" data-animate>
+    <h3>Summary — the model in five lines</h3>
+    <ul>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg><span><b>Product:</b> LendPeak purchases a business's <b>future sales</b> at a discount — $50,000 today for $65,000 of tomorrow's revenue.</span></li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg><span><b>Price:</b> a flat <b>factor rate</b> (1.30), not interest. The $15,000 spread is the disclosed cost.</span></li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg><span><b>Repayment:</b> automatic, as a <b>percentage of daily sales</b> — it rises and falls with the business.</span></li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg><span><b>Revenue:</b> the <b>margin</b> (if funded) or a <b>commission</b> (if arranged) — $3,500–$10,000+ net per deal.</span></li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2l-1.5-1.5z"/></svg><span><b>Our mandate:</b> deliver more qualified merchants at ~$1,500 each, and report which leads <b>funded</b> so the algorithm compounds.</span></li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><svg class="mark" width="26" height="26" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="11" fill="#0FB97D"/><path d="M8 28L17 14l6 8 3-4 6 10H8z" fill="#fff"/><circle cx="29" cy="12" r="3" fill="#fff"/></svg> LendPeak</div>
+    <span>Confidential · Prepared for LendPeak · Ref LP-WC-001 · Figures are an illustrative model for one example deal; actual rates, terms, and commissions vary.</span>
+  </div>
+</footer>
+
+<script>
+const months=['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10','M11','M12'];
+const monthly=5417,total=65000;const barsEl=document.getElementById('repayBars');
+let bal=total;
+months.forEach((m,i)=>{
+  bal-=monthly;if(bal<0)bal=0;
+  const colH=Math.round((monthly/6000)*100);
+  const blnB=Math.round((bal/total)*86)+5;
+  const bar=document.createElement('div');bar.className='bar';
+  bar.innerHTML='<div class="bln" style="--b:'+blnB+'%"></div><div class="col" style="--h:'+colH+'%;transition-delay:'+(i*70)+'ms"></div><span class="mo">'+m+'</span>';
+  barsEl.appendChild(bar);
+});
+function countUp(el){
+  const target=parseFloat(el.dataset.count),dec=+(el.dataset.dec||0);
+  const pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';const dur=1200,t0=performance.now();
+  function tick(now){let p=Math.min((now-t0)/dur,1);p=1-Math.pow(1-p,3);let val=target*p;
+    let s=dec?val.toFixed(dec):Math.round(val).toLocaleString('en-US');
+    el.textContent=pre+s+suf;
+    if(p<1)requestAnimationFrame(tick);else el.textContent=pre+(dec?target.toFixed(dec):Math.round(target).toLocaleString('en-US'))+suf;}
+  requestAnimationFrame(tick);
+}
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;el.classList.add('in');
+  if(el.dataset.count!==undefined&&!el._d){el._d=1;countUp(el);}
+  if(el.querySelectorAll){el.querySelectorAll('[data-count]').forEach(c=>{if(!c._d){c._d=1;countUp(c);}});}
+  io.unobserve(el);});},{threshold:.2});
+document.querySelectorAll('[data-animate],[data-count],#repayBars,#wfFund,#wfArr,.flow,.funnel,.bars').forEach(el=>io.observe(el));
+io.observe(barsEl);
+</script>
+</body>
+</html>
