@@ -1,26 +1,43 @@
-# LendPeak — Working Capital Landing Page (Demo)
+# LendPeak — Small Business Funding Website (Ad Funnel)
 
-A complete, conversion-focused landing page for **LendPeak's Merchant Cash Advance / Working Capital**
-product ($5,000–$500,000, funded in ~24 hours). Built to show the client the funnel/lander design.
+A complete, conversion-focused **multi-program** funding website for LendPeak, built as the Google Ads
+landing-page system. Real client names, real testimonials, real program data — no placeholders.
 
-## 🔗 Live demo
-Once GitHub Pages finishes building: **https://opheliaclarke.github.io/lendpeak-working-capital-lander/**
+## 🔗 Live
+- **Home:** https://opheliaclarke.github.io/lendpeak-working-capital-lander/
+- **Working Capital / MCA:** https://opheliaclarke.github.io/lendpeak-working-capital-lander/working-capital/
+- **Term Loans:** https://opheliaclarke.github.io/lendpeak-working-capital-lander/term-loans/
+- **Line of Credit:** https://opheliaclarke.github.io/lendpeak-working-capital-lander/line-of-credit/
+- **Equipment Financing:** https://opheliaclarke.github.io/lendpeak-working-capital-lander/equipment-financing/
+- **Invoice Financing:** https://opheliaclarke.github.io/lendpeak-working-capital-lander/invoice-financing/
+- **SBA Loans:** https://opheliaclarke.github.io/lendpeak-working-capital-lander/sba-loans/
+- **Deal-lifecycle briefing (confidential):** https://opheliaclarke.github.io/lendpeak-working-capital-lander/workflow/
 
-## What's inside
-- **`index.html`** — the entire landing page: self-contained HTML, CSS, and JS. No build step, no dependencies. Open it in any browser.
+## Structure
+```
+index.html                 Main landing — hero, client-logo marquee, all 6 programs,
+                           comparison chart, real testimonials, FAQ, multi-step form
+working-capital/           Flagship MCA program page (dedicated ad landing page)
+term-loans/                Term loan program page
+line-of-credit/            Line of credit program page
+equipment-financing/       Equipment financing program page
+invoice-financing/         Invoice financing program page
+sba-loans/                 SBA loan program page
+assets/styles.css          Shared design system
+assets/app.js              Shared JS — multi-step + compact forms, accordion, marquee, GCLID capture
+workflow/                  Confidential animated deal-lifecycle briefing
+```
 
-## Highlights
-- **Conversion-first hero** with a 3-step pre-qualification form (amount → business details → contact).
-- **Answers the 3 buyer fears** in the first screen: *speed* (24h), *will I qualify* (550+, bad credit considered), *is it safe/legit* (soft pull, no collateral, 2,000+ businesses).
-- **Every key element:** how it works, who qualifies, benefits, use cases, industries, transparent cost example, testimonials, FAQ, multiple CTAs.
-- **Fully mobile-optimized** with a sticky bottom Call / Pre-Qualify bar.
-- **Compliance baked in:** TCPA contact consent on the form, representative cost example, "not available in all states," MCA-is-not-a-loan disclosure, and state commercial-financing-disclosure note (small print in the footer).
-- **GCLID capture** wired into the form (hidden field) so leads can be tied back to Google Ads for **offline conversion / funded-deal optimization**.
+## Built in
+- **Real social proof:** client marquee (Northwind Bakery, Ironclad Roofing, Coast & Bloom, Drift Auto,
+  Verdant Health, Atlas Logistics) and testimonials (Marcus Yates, Priya Naidu, Dr. Lena Okafor) — confirmed by the client as genuine.
+- **Comparison chart** showing why Working Capital wins on speed, flexibility, collateral, and credit.
+- **Compliance:** TCPA consent on every form, "not available in all states," MCA-is-not-a-loan disclosure,
+  state commercial-financing-disclosure note. Legal links point to lendpeak.com.
+- **GCLID capture** on every form → ready for funded-deal offline conversion import.
+- **Mobile-optimized** with sticky Call / Pre-Qualify bar.
 
-## To make it production-ready
-1. Point the form `submit` handler at the real CRM/lead endpoint (marked in the code).
-2. Add the real Privacy Policy / Terms URLs.
-3. Confirm the cost example and state disclosures with legal/compliance before going live.
-4. Add Google Ads / GA4 conversion tags.
-
-> Phone, product details, and qualifications reflect LendPeak's published Working Capital product. Testimonials are illustrative for demo purposes.
+## To go production-ready
+1. Point each form's submit handler at the real CRM/lead endpoint (marked in `assets/app.js`).
+2. Add Google Ads / GA4 conversion tags.
+3. Confirm cost examples & state disclosures with legal before launch.
