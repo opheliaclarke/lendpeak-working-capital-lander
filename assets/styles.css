@@ -118,9 +118,29 @@ header.site.scrolled{box-shadow:0 6px 24px rgba(13,38,76,.07);border-color:var(-
 .track{display:flex;gap:46px;width:max-content;animation:scroll 32s linear infinite}
 .marquee:hover .track{animation-play-state:paused}
 @keyframes scroll{to{transform:translateX(-50%)}}
-.client{display:flex;align-items:center;gap:11px;flex:none;opacity:.85}
-.client .mono{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Sora';font-weight:800;font-size:1.05rem}
-.client b{font-family:'Sora';color:var(--navy);font-size:1.05rem;white-space:nowrap}
+.marquee .track{align-items:center}
+.client{display:flex;align-items:center;gap:11px;flex:none;color:#9aacc2;transition:color .25s,transform .25s}
+.client:hover{color:var(--c,var(--navy));transform:translateY(-2px)}
+.client i{font-size:1.85rem;line-height:1}
+.client b{font-family:'Sora';font-weight:700;color:inherit;font-size:1.12rem;white-space:nowrap;letter-spacing:-.01em}
+
+/* Icon sizing across components (Font Awesome / Boxicons) */
+.ico i{font-size:1.45rem;line-height:1}
+.drop a .di i{font-size:1.02rem}
+.tb-item i{color:#39e0a6;font-size:1.2rem;flex:none}
+.pill i{color:#39e0a6;font-size:.95rem}
+.tel i,.foot-tel i{color:var(--green)}
+.stars i{color:var(--amber);font-size:.95rem;letter-spacing:0}
+.btn i{font-size:.92em}
+.go i{font-size:.85em;transition:transform .18s}
+.prog:hover .go i{transform:translateX(4px)}
+.qa .chev i{display:block}
+.fc-trust i{color:var(--green)}
+.tst .av i{font-size:1.1rem}
+.drop a .di{align-items:center}
+.qual-aside li i,.cost .points i{color:#39e0a6}
+table.compare td .fa-check{color:var(--green-d)}
+table.compare td .fa-xmark{color:#c2ccd9}
 
 /* Trust bar */
 .trustbar{background:var(--navy);color:#fff;padding:20px 0}
