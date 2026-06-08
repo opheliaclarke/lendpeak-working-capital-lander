@@ -5,8 +5,20 @@
   if(hdr)addEventListener('scroll',function(){hdr.classList.toggle('scrolled',scrollY>10);});
 
   // Capture GCLID (for offline conversion / funded-deal import)
-  var gclid=new URLSearchParams(location.search).get('gclid');
+  var params=new URLSearchParams(location.search);
+  var gclid=params.get('gclid');
   if(gclid)document.querySelectorAll('input.gclid').forEach(function(i){i.value=gclid;});
+
+  // Controlled dynamic LP headline — message match from ad ?h= param (WHITELIST only; never raw query insertion)
+  var HEADS={
+    sameday:'Same-day business funding — <span class="hl">decision in 24 hours.</span>',
+    badcredit:'Bad credit? <span class="hl">You may still qualify for funding.</span>',
+    apply:'Apply in 60 seconds — <span class="hl">funding in as fast as 24 hours.</span>',
+    bigticket:'$100K&ndash;$1M in business funding, <span class="hl">fast.</span>',
+    mca:'Merchant cash advance — <span class="hl">funded in as fast as 24 hours.</span>'
+  };
+  var hKey=params.get('h'), hEl=document.getElementById('dynhead');
+  if(hEl && hKey && HEADS[hKey]) hEl.innerHTML=HEADS[hKey];
 
   // Amount selector tiles
   document.querySelectorAll('.amount-grid').forEach(function(grid){
