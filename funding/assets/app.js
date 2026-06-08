@@ -9,7 +9,9 @@
   var gclid=params.get('gclid');
   if(gclid)document.querySelectorAll('input.gclid').forEach(function(i){i.value=gclid;});
 
-  // Controlled dynamic LP headline — message match from ad ?h= param (WHITELIST only; never raw query insertion)
+  // Controlled dynamic LP — message match from ad ?h= param (WHITELIST only; never raw query insertion).
+  // The param lives in each ad group's FINAL URL, so 100% of clicks carry it. If absent/unknown or JS off,
+  // the page keeps its default headline/sub — graceful fallback, never broken.
   var HEADS={
     sameday:'Same-day business funding — <span class="hl">decision in 24 hours.</span>',
     badcredit:'Bad credit? <span class="hl">You may still qualify for funding.</span>',
@@ -17,8 +19,18 @@
     bigticket:'$100K&ndash;$1M in business funding, <span class="hl">fast.</span>',
     mca:'Merchant cash advance — <span class="hl">funded in as fast as 24 hours.</span>'
   };
-  var hKey=params.get('h'), hEl=document.getElementById('dynhead');
-  if(hEl && hKey && HEADS[hKey]) hEl.innerHTML=HEADS[hKey];
+  var SUBS={
+    sameday:"Same-day decisions and funding in as little as 24 hours. Apply in 60 seconds with a soft credit pull — no impact to your score.",
+    badcredit:"Approved on your revenue, not just your credit. We consider 550+, and checking your options won't affect your credit score.",
+    apply:"Apply in 60 seconds with a soft pull and see your options. Funds in as fast as 24 hours after signing. No collateral, bad credit considered.",
+    bigticket:"$100K&ndash;$1M in working capital for established businesses. No collateral, revenue-based repayment, funds in as fast as 24 hours.",
+    mca:"Get $10,000&ndash;$1,000,000 advanced against your future sales. Soft credit pull, no collateral, bad credit considered."
+  };
+  var hKey=params.get('h'), hEl=document.getElementById('dynhead'), sEl=document.getElementById('dynsub');
+  if(hKey && HEADS[hKey]){
+    if(hEl) hEl.innerHTML=HEADS[hKey];
+    if(sEl && SUBS[hKey]) sEl.innerHTML=SUBS[hKey];
+  }
 
   // Amount selector tiles
   document.querySelectorAll('.amount-grid').forEach(function(grid){

@@ -71,7 +71,11 @@
 <tr><td><b>Converted Lead</b></td><td>Funded deal — offline import (90-day window)</td><td>✅ once funded data exists</td><td>commission</td></tr>
 </table>
 <div class="callout ok"><b>Enhanced Conversions for Leads</b> — hash email + phone on form submit. (1) Recovers cookie-lost conversions; (2) lets the funded deal import match on <b>email/phone</b> weeks later — no fragile GCLID plumbing. GCLID captured as backup.</div>
-<div class="label">Dynamic landing-page headline — ad final URL carries <code>?h=</code> (whitelist; the LP swaps its H1 to match)</div>
+<h3 style="margin-top:22px">Dynamic landing page — how each ad group sees a different page</h3>
+<div class="callout"><b>The <code>?h=</code> param lives in each ad group's FINAL URL — not in sitelinks.</b> So <b>100% of clicks</b> from that ad group (main headline included) land with the param, and the LP swaps its <b>headline + sub-headline</b> to match the intent. Sitelinks carry their own <code>?h=</code> independently. If JS is off or the param is missing, the page keeps its default copy — <b>graceful fallback, never broken</b>. (This is whitelist-controlled text, never raw keyword insertion — which would get a finance page disapproved.)</div>
+<div class="label">Final URL per ad group — set this on each RSA (every click carries it)</div>
+<!--FINALURLS-->
+<div class="label">What the LP swaps for each <code>?h=</code> value (headline + sub-headline)</div>
 <!--LPMAP-->
 
 <h2 id="settings">1 · Campaign settings</h2>
@@ -167,7 +171,8 @@
 <script>
 const B=(t)=>{const d=document.createElement('div');d.className='block';const b=document.createElement('button');b.className='copybtn';b.textContent='Copy';const p=document.createElement('pre');p.textContent=t;b.onclick=()=>{navigator.clipboard.writeText(t).then(()=>{b.textContent='Copied ✓';b.classList.add('done');setTimeout(()=>{b.textContent='Copy';b.classList.remove('done')},1400)})};d.appendChild(b);d.appendChild(p);return d};
 const data={
-LPMAP:`?h=mca        →  Merchant cash advance — funded in as fast as 24 hours.\n?h=sameday    →  Same-day business funding — decision in 24 hours.\n?h=badcredit  →  Bad credit? You may still qualify for funding.\n?h=apply      →  Apply in 60 seconds — funding in as fast as 24 hours.\n?h=bigticket  →  $100K–$1M in business funding, fast.`,
+FINALURLS:`A1 / A2 / A3  (Core)     ->  /funding/working-capital/?h=mca\nB1  (Same-Day)           ->  /funding/working-capital/?h=sameday\nB2  (Bad Credit)         ->  /funding/working-capital/?h=badcredit\nB3  (Apply)              ->  /funding/working-capital/?h=apply\nC1 / C2  (Big-Ticket)    ->  /funding/working-capital/?h=bigticket\nD1  (Competitor)         ->  /funding/working-capital/?h=mca`,
+LPMAP:`?h=mca\n  H1:  Merchant cash advance - funded in as fast as 24 hours.\n  Sub: Get $10K-$1M advanced against future sales. Soft pull, no collateral, bad credit considered.\n\n?h=sameday\n  H1:  Same-day business funding - decision in 24 hours.\n  Sub: Same-day decisions, funds in as little as 24 hours. Apply in 60s, soft pull, no score impact.\n\n?h=badcredit\n  H1:  Bad credit? You may still qualify for funding.\n  Sub: Approved on revenue, not just credit. 550+ considered. Checking won't affect your score.\n\n?h=apply\n  H1:  Apply in 60 seconds - funding in as fast as 24 hours.\n  Sub: Apply in 60s with a soft pull. Funds in as fast as 24 hrs. No collateral, bad credit OK.\n\n?h=bigticket\n  H1:  $100K-$1M in business funding, fast.\n  Sub: $100K-$1M for established businesses. No collateral, revenue-based, funds in ~24 hours.`,
 KW_A1:`[merchant cash advance]\n"merchant cash advance"\n[merchant cash advance for small business]\n"merchant cash advance for small business"\n"merchant cash advance companies"\n"mca loan"\n"mca funding"\n"merchant cash advance lender"`,
 KW_A2:`[business cash advance]\n"business cash advance"\n"cash advance for business"\n"small business cash advance"\n"business cash advance loan"\n"merchant funding"`,
 KW_A3:`[working capital loan]\n[revenue based financing]\n"working capital loan"\n"working capital for small business"\n"revenue based financing"\n"revenue based business loan"\n"sales based financing"\n"business funding based on revenue"`,
