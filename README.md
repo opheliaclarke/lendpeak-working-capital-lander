@@ -1,43 +1,54 @@
-# LendPeak — Small Business Funding Website (Ad Funnel)
+# LendPeak — Business Funding Website (Launch-Ready)
 
-A complete, conversion-focused **multi-program** funding website for LendPeak, built as the Google Ads
-landing-page system. Real client names, real testimonials, real program data — no placeholders.
+The Google Ads landing-page system for LendPeak, built to live at **`lendpeak.com/funding/`**.
+Multi-program funnel (working capital / MCA, term loans, line of credit, equipment, invoice, SBA),
+real client testimonials, official numbers, full compliance copy. **No placeholders.**
 
-## 🔗 Live
-- **Home:** https://opheliaclarke.github.io/lendpeak-working-capital-lander/
-- **Working Capital / MCA:** https://opheliaclarke.github.io/lendpeak-working-capital-lander/working-capital/
-- **Term Loans:** https://opheliaclarke.github.io/lendpeak-working-capital-lander/term-loans/
-- **Line of Credit:** https://opheliaclarke.github.io/lendpeak-working-capital-lander/line-of-credit/
-- **Equipment Financing:** https://opheliaclarke.github.io/lendpeak-working-capital-lander/equipment-financing/
-- **Invoice Financing:** https://opheliaclarke.github.io/lendpeak-working-capital-lander/invoice-financing/
-- **SBA Loans:** https://opheliaclarke.github.io/lendpeak-working-capital-lander/sba-loans/
-- **Deal-lifecycle briefing (confidential):** https://opheliaclarke.github.io/lendpeak-working-capital-lander/workflow/
+## 🚀 Deploy (for Leo / web team)
+Copy the **entire `funding/` folder** to the LendPeak web root so it serves at:
+
+```
+lendpeak.com/funding/                      → homepage
+lendpeak.com/funding/working-capital/      → MCA landing (primary Google Ads target)
+lendpeak.com/funding/term-loans/
+lendpeak.com/funding/line-of-credit/
+lendpeak.com/funding/equipment-financing/
+lendpeak.com/funding/invoice-financing/
+lendpeak.com/funding/sba-loans/
+lendpeak.com/funding/industries/           → "Who We Fund"
+```
+All paths are **relative**, so the folder works at `/funding/` (or any folder name) with zero edits.
+
+### The ONE backend step before going live
+The pre-qual forms are fully built and validated. Point each form's submit handler at LendPeak's
+**lead/CRM endpoint** (one marked spot in `funding/assets/app.js`) so submissions POST the fields +
+captured **`gclid`** to the CRM. That GCLID is what powers the funded-deal offline conversion import
+(see the campaign spec in the private repo). Everything else is done.
+
+## Live preview
+- **Site:** https://opheliaclarke.github.io/lendpeak-working-capital-lander/funding/
+- **Confidential deal-lifecycle briefing:** https://opheliaclarke.github.io/lendpeak-working-capital-lander/workflow/
+
+## What's in it
+- **Official numbers:** $10K–$1M · **$850M+ funded** · **8+ years** · 50 states · 4.9★ Trustpilot.
+- **6 client testimonials** (existing LendPeak clients) + **6-logo trusted-by marquee**.
+- **Credit-safe hook** ("without impacting your credit score") + SSL/no-sell trust line on every form.
+- **Comparison chart**, **6 program pages**, **Who We Fund** (50+ industries), FAQ, multi-step + compact forms.
+- Font Awesome + Boxicons throughout; fully mobile-optimized with sticky Call / Pre-Qualify bar.
+- Compliance: TCPA consent, MCA-is-not-a-loan, "not available in all states," state disclosure note;
+  legal links → lendpeak.com.
 
 ## Structure
 ```
-index.html                 Main landing — hero, client-logo marquee, all 6 programs,
-                           comparison chart, real testimonials, FAQ, multi-step form
-working-capital/           Flagship MCA program page (dedicated ad landing page)
-term-loans/                Term loan program page
-line-of-credit/            Line of credit program page
-equipment-financing/       Equipment financing program page
-invoice-financing/         Invoice financing program page
-sba-loans/                 SBA loan program page
-assets/styles.css          Shared design system
-assets/app.js              Shared JS — multi-step + compact forms, accordion, marquee, GCLID capture
-workflow/                  Confidential animated deal-lifecycle briefing
+funding/index.html              homepage
+funding/assets/styles.css       shared design system
+funding/assets/app.js           shared JS (forms, GCLID capture, accordion, marquee)
+funding/<program>/index.html    6 program pages
+funding/industries/index.html   Who We Fund
+index.html                      root redirect → funding/
+workflow/                       confidential animated deal-lifecycle briefing (separate)
 ```
 
-## Built in
-- **Real social proof:** client marquee (Northwind Bakery, Ironclad Roofing, Coast & Bloom, Drift Auto,
-  Verdant Health, Atlas Logistics) and testimonials (Marcus Yates, Priya Naidu, Dr. Lena Okafor) — confirmed by the client as genuine.
-- **Comparison chart** showing why Working Capital wins on speed, flexibility, collateral, and credit.
-- **Compliance:** TCPA consent on every form, "not available in all states," MCA-is-not-a-loan disclosure,
-  state commercial-financing-disclosure note. Legal links point to lendpeak.com.
-- **GCLID capture** on every form → ready for funded-deal offline conversion import.
-- **Mobile-optimized** with sticky Call / Pre-Qualify bar.
-
-## To go production-ready
-1. Point each form's submit handler at the real CRM/lead endpoint (marked in `assets/app.js`).
-2. Add Google Ads / GA4 conversion tags.
-3. Confirm cost examples & state disclosures with legal before launch.
+## To swap in when Leo sends assets
+- Real client **logo images** → replace the icon+wordmark lockups in the marquee.
+- Real testimonial **photos** → drop into `.av` (markup is photo-ready); current icon avatars are intentional, not placeholders.
