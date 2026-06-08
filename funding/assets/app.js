@@ -32,6 +32,24 @@
     if(sEl && SUBS[hKey]) sEl.innerHTML=SUBS[hKey];
   }
 
+  // Seamless, always-full client logo marquee.
+  // 1) repeat the logos until one "half" is wider than the screen (no empty space)
+  // 2) duplicate that half once → two identical halves so translateX(-50%) loops invisibly
+  // 3) set duration from width for a constant, smooth speed regardless of how many logos
+  function buildMarquee(){
+    var track=document.querySelector('.marquee .track');
+    if(!track) return;
+    if(track.dataset.unit){ track.innerHTML=track.dataset.unit; }      // reset on rebuild
+    else { track.dataset.unit=track.innerHTML; }
+    var unit=track.dataset.unit, guard=0;
+    while(track.scrollWidth < window.innerWidth + 200 && guard < 30){ track.innerHTML += unit; guard++; }
+    track.innerHTML += track.innerHTML;                                // two identical halves
+    var halfW = track.scrollWidth / 2;
+    track.style.animationDuration = Math.max(20, Math.round(halfW / 70)) + 's';  // ~70px/sec
+  }
+  buildMarquee();
+  var rzT; addEventListener('resize', function(){ clearTimeout(rzT); rzT=setTimeout(buildMarquee, 250); });
+
   // Amount selector tiles
   document.querySelectorAll('.amount-grid').forEach(function(grid){
     grid.querySelectorAll('.opt').forEach(function(o){

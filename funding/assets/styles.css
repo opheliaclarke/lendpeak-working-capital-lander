@@ -115,11 +115,9 @@ header.site.scrolled{box-shadow:0 6px 24px rgba(13,38,76,.07);border-color:var(-
 /* Logo marquee */
 .marquee{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0;overflow:hidden}
 .marquee .label{text-align:center;color:var(--muted);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-bottom:20px}
-.track{display:flex;gap:46px;width:max-content;animation:scroll 32s linear infinite}
-.marquee:hover .track{animation-play-state:paused}
-@keyframes scroll{to{transform:translateX(-50%)}}
-.marquee .track{align-items:center}
-.client{display:flex;align-items:center;gap:11px;flex:none;color:#9aacc2;transition:color .25s,transform .25s}
+.marquee .track{display:flex;align-items:center;width:max-content;animation:marq linear infinite;will-change:transform}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.client{display:flex;align-items:center;gap:11px;flex:0 0 auto;margin-right:54px;color:#9aacc2;transition:color .25s,transform .25s}
 .client:hover{color:var(--c,var(--navy));transform:translateY(-2px)}
 .client i{font-size:1.85rem;line-height:1}
 .client b{font-family:'Sora';font-weight:700;color:inherit;font-size:1.12rem;white-space:nowrap;letter-spacing:-.01em}
