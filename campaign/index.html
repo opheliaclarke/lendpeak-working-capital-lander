@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>LendPeak MCA — Google Ads Campaign Blueprint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0A2540;--navy2:#103a66;--blue:#1E63E9;--green:#0FB97D;--green-d:#0a9e6a;--amber:#E8920C;--red:#E1554F;--bg:#EEF3F9;--card:#fff;--line:#dde6f1;--text:#0E1B2E;--muted:#5A6B82}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+h1,h2,h3,h4{font-family:'Sora',sans-serif;letter-spacing:-.02em;color:var(--navy)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+code,pre{font-family:'JetBrains Mono',monospace}
+/* header */
+.top{background:linear-gradient(160deg,#0A2540,#103a66);color:#fff;padding:34px 0 28px}
+.top h1{color:#fff;font-size:clamp(1.5rem,3.5vw,2.1rem)}
+.top p{color:#cfe0f5;margin-top:6px;font-size:.95rem}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#eaf2ff;padding:5px 12px;border-radius:20px;font-size:.8rem;font-weight:600}
+.tag.g{background:rgba(15,185,125,.2);border-color:rgba(15,185,125,.4);color:#7ff0c8}
+/* index */
+.idx{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.idx .wrap{display:flex;flex-wrap:wrap;gap:6px;padding:12px 20px}
+.idx a{font-size:.82rem;font-weight:600;color:var(--navy);padding:6px 12px;border-radius:8px;text-decoration:none}
+.idx a:hover{background:var(--bg);color:var(--blue)}
+/* sections */
+section{padding:34px 0 8px}
+.sechead{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+.sechead h2{font-size:1.4rem}
+.sechead .n{font-family:'Sora';font-weight:800;color:var(--green-d)}
+.sub{color:var(--muted);font-size:.92rem;margin-bottom:18px}
+/* campaign card */
+.camp{background:#fff;border:1px solid var(--line);border-left:5px solid var(--blue);border-radius:14px;padding:22px;margin-bottom:22px;box-shadow:0 6px 20px rgba(13,38,76,.05)}
+.camp.c-a{border-left-color:#1E63E9}.camp.c-b{border-left-color:#0FB97D}.camp.c-c{border-left-color:#E8920C}.camp.c-d{border-left-color:#8b5cf6}
+.camp>h3{font-size:1.18rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pill{font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.04em}
+.pill.blue{background:rgba(30,99,233,.12);color:#1750c4}.pill.green{background:rgba(15,185,125,.14);color:#0a9e6a}.pill.amber{background:rgba(232,146,12,.14);color:#b9760a}.pill.purp{background:rgba(139,92,246,.14);color:#6d28d9}
+.settings{font-size:.82rem;color:var(--muted);margin:8px 0 16px;padding:10px 14px;background:var(--bg);border-radius:9px}
+.settings b{color:var(--navy)}
+/* ad group */
+.ag{border:1px solid var(--line);border-radius:11px;padding:16px;margin-top:14px;background:#fcfdff}
+.ag h4{font-size:1.02rem;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.lp{font-family:'JetBrains Mono';font-size:.72rem;background:#0A2540;color:#7ff0c8;padding:3px 8px;border-radius:6px}
+.lbl{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:14px 0 6px;display:block}
+pre.kw{background:#0d1f38;color:#dbe9ff;border-radius:9px;padding:12px 14px;font-size:.8rem;overflow-x:auto;white-space:pre;line-height:1.7}
+pre.kw .ex{color:#7ff0c8}.kw .ph{color:#ffd89a}
+/* RSA */
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.h-chip{background:#eef4ff;border:1px solid #d4e2ff;color:var(--navy);padding:6px 11px;border-radius:7px;font-size:.83rem;font-weight:500}
+.d-list{display:grid;gap:7px;margin-top:4px}
+.d-item{background:#fff;border:1px solid var(--line);border-left:3px solid var(--green);padding:9px 12px;border-radius:7px;font-size:.86rem;color:#23344a}
+.count{font-size:.7rem;color:var(--muted);font-weight:600;margin-left:6px}
+/* negatives + assets grids */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.neg{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px}
+.neg h4{font-size:.92rem;margin-bottom:8px;color:var(--red)}
+.neg pre{font-family:'JetBrains Mono';font-size:.76rem;color:#43536a;white-space:pre-wrap;line-height:1.6}
+.acard{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px}
+.acard h4{font-size:.95rem;margin-bottom:8px}
+.acard ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px}
+.acard li{background:var(--bg);border:1px solid var(--line);padding:5px 11px;border-radius:20px;font-size:.82rem;font-weight:500;color:var(--navy)}
+table.sl{width:100%;border-collapse:collapse;font-size:.84rem}
+table.sl td{padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+table.sl td:first-child{font-weight:600;color:var(--navy);white-space:nowrap}
+table.sl td .u{font-family:'JetBrains Mono';font-size:.72rem;color:var(--green-d)}
+/* conversions */
+.conv{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cv{background:#fff;border:1px solid var(--line);border-radius:11px;padding:18px}
+.cv .b{display:inline-block;font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:20px;background:rgba(15,185,125,.14);color:#0a9e6a;margin-bottom:8px}
+.cv h4{font-size:1.02rem}.cv p{font-size:.86rem;color:var(--muted);margin-top:5px}
+.note{background:rgba(232,146,12,.08);border:1px solid rgba(232,146,12,.3);border-radius:10px;padding:13px 16px;font-size:.86rem;color:#8a5a07;margin-top:16px}
+footer{padding:30px 0;color:var(--muted);font-size:.78rem;text-align:center;border-top:1px solid var(--line);margin-top:24px}
+@media(max-width:720px){.grid2,.conv{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap">
+  <h1>LendPeak MCA — Google Ads Campaign Blueprint</h1>
+  <p>The complete build: campaigns, ad groups, keywords, ads, negatives, assets &amp; conversions.</p>
+  <div class="tags">
+    <span class="tag g">MCA only</span><span class="tag g">All 50 states</span><span class="tag">Search network</span>
+    <span class="tag">4 campaigns</span><span class="tag">10 ad groups</span><span class="tag">Updated 2026-06-08</span>
+  </div>
+</div></div>
+
+<div class="idx"><div class="wrap">
+  <a href="#conv">Conversions</a><a href="#settings">Settings</a><a href="#a">Camp A · Core</a><a href="#b">Camp B · Modifiers</a><a href="#c">Camp C · Big-Ticket</a><a href="#d">Camp D · Competitor</a><a href="#neg">Negatives</a><a href="#assets">Assets</a>
+</div></div>
+
+<div class="wrap">
+
+<!-- CONVERSIONS -->
+<section id="conv">
+  <div class="sechead"><span class="n">01</span><h2>Conversion Actions</h2></div>
+  <p class="sub">Exactly two. Enhanced Conversions for Leads ties it together.</p>
+  <div class="conv">
+    <div class="cv"><span class="b">PRIMARY at launch</span><h4>Lead</h4><p>Pre-qual form submit + qualified call (≥60s). Gives Smart Bidding volume early.</p></div>
+    <div class="cv"><span class="b">PRIMARY once funded data exists</span><h4>Converted Lead</h4><p>Funded deal via offline import (90-day window). Value = commission. The true optimization target.</p></div>
+  </div>
+  <div class="note"><b>Enhanced Conversions for Leads</b> — hash email + phone on submit. Recovers cookie-lost conversions and lets the funded deal import match on email/phone weeks later (no fragile GCLID plumbing). GCLID captured as backup.</div>
+</section>
+
+<!-- SETTINGS -->
+<section id="settings">
+  <div class="sechead"><span class="n">02</span><h2>Shared Campaign Settings</h2></div>
+  <div class="settings" style="font-size:.88rem">
+    <b>Network:</b> Search only (no Search Partners / Display) &nbsp;·&nbsp; <b>Location:</b> All 50 US states — <b>Presence</b> &nbsp;·&nbsp;
+    <b>Language:</b> English &nbsp;·&nbsp; <b>Schedule:</b> call-center hours &nbsp;·&nbsp; <b>Devices:</b> all (watch mobile) &nbsp;·&nbsp;
+    <b>Negatives:</b> one shared list (below) &nbsp;·&nbsp; <b>Match types:</b> exact + phrase at launch<br>
+    <b>Bidding staircase:</b> Maximize Clicks (capped) → Maximize Conversions / <i>Lead</i> → tCPA → tROAS / <i>Converted Lead</i>
+  </div>
+</section>
+
+<!-- CAMPAIGN A -->
+<section id="a">
+  <div class="sechead"><span class="n">03</span><h2>Campaign A · MCA Core</h2></div>
+  <p class="sub">Exact + phrase money terms — the workhorse.</p>
+  <div class="camp c-a">
+    <h3>Campaign A — MCA · Core <span class="pill blue">biggest budget</span></h3>
+    <div class="settings"><b>Theme:</b> core merchant/business cash advance &amp; working capital · <b>Bidding:</b> staircase above</div>
+
+    <div class="ag"><h4>AG-A1 · Merchant Cash Advance <span class="lp">?h=mca</span></h4>
+      <span class="lbl">Keywords</span>
+      <pre class="kw"><span class="ex">[merchant cash advance]</span>
+<span class="ph">"merchant cash advance"</span>
+<span class="ex">[merchant cash advance for small business]</span>
+<span class="ph">"merchant cash advance for small business"</span>
+<span class="ph">"merchant cash advance companies"</span>
+<span class="ph">"mca loan"</span>   <span class="ph">"mca funding"</span>   <span class="ph">"merchant cash advance lender"</span></pre>
+    </div>
+    <div class="ag"><h4>AG-A2 · Business Cash Advance <span class="lp">?h=mca</span></h4>
+      <span class="lbl">Keywords</span>
+      <pre class="kw"><span class="ex">[business cash advance]</span>
+<span class="ph">"business cash advance"</span>   <span class="ph">"cash advance for business"</span>
+<span class="ph">"small business cash advance"</span>   <span class="ph">"business cash advance loan"</span>   <span class="ph">"merchant funding"</span></pre>
+    </div>
+    <div class="ag"><h4>AG-A3 · Working Capital / Revenue-Based <span class="lp">?h=mca</span></h4>
+      <span class="lbl">Keywords</span>
+      <pre class="kw"><span class="ex">[working capital loan]</span>   <span class="ex">[revenue based financing]</span>
+<span class="ph">"working capital loan"</span>   <span class="ph">"working capital for small business"</span>
+<span class="ph">"revenue based financing"</span>   <span class="ph">"revenue based business loan"</span>
+<span class="ph">"sales based financing"</span>   <span class="ph">"business funding based on revenue"</span></pre>
+    </div>
+
+    <span class="lbl" style="margin-top:18px">Responsive Search Ad — Core <span class="count">15 headlines · 4 descriptions</span></span>
+    <div class="chips">
+      <span class="h-chip">Merchant Cash Advance</span><span class="h-chip">Get $10K–$1,000,000</span><span class="h-chip">Funded in As Fast As 24 Hrs</span><span class="h-chip">Same-Day Decision</span><span class="h-chip">No Collateral Required</span><span class="h-chip">Soft Credit Check Only</span><span class="h-chip">Approved on Revenue, Not Credit</span><span class="h-chip">Bad Credit? You May Qualify</span><span class="h-chip">Apply in 60 Seconds</span><span class="h-chip">$850M+ Funded</span><span class="h-chip">Trusted in All 50 States</span><span class="h-chip">Real Funding Specialists</span><span class="h-chip">Keep Your Cash Flow Moving</span><span class="h-chip">Revenue-Based Repayment</span><span class="h-chip">See Your Options Today</span>
+    </div>
+    <div class="d-list" style="margin-top:10px">
+      <div class="d-item">Get $10K–$1M in working capital. Soft credit pull won't affect your score. Apply in 60s.</div>
+      <div class="d-item">Funds in as little as 24 hours. No collateral, revenue-based repayment, costs upfront.</div>
+      <div class="d-item">Approved on your sales, not just credit. 550+ welcome. Real specialists, not a marketplace.</div>
+      <div class="d-item">$850M+ funded across all 50 states. Pre-qualify in 60 seconds — no obligation.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPAIGN B -->
+<section id="b">
+  <div class="sechead"><span class="n">04</span><h2>Campaign B · High-Intent Modifiers</h2></div>
+  <p class="sub">Urgency, qualifying &amp; action intent — highest fund-rate.</p>
+  <div class="camp c-b">
+    <h3>Campaign B — MCA · High-Intent Modifiers <span class="pill green">highest intent</span></h3>
+
+    <div class="ag"><h4>AG-B1 · Same-Day / Fast Funding 🔥 <span class="lp">?h=sameday</span></h4>
+      <span class="lbl">Keywords</span>
+      <pre class="kw"><span class="ph">"same day business funding"</span>   <span class="ph">"same day business loan"</span>
+<span class="ph">"fast business funding"</span>   <span class="ph">"fast business cash advance"</span>   <span class="ph">"quick business funding"</span>
+<span class="ph">"emergency business funding"</span>   <span class="ph">"24 hour business funding"</span>   <span class="ph">"need business funding fast"</span></pre>
+      <span class="lbl">RSA — Same-Day <span class="count">12 H · 4 D</span></span>
+      <div class="chips"><span class="h-chip">Same-Day Business Funding</span><span class="h-chip">Decision in 24 Hours</span><span class="h-chip">Funded in As Fast As 24 Hrs</span><span class="h-chip">Fast Working Capital</span><span class="h-chip">Need Funding Fast?</span><span class="h-chip">Skip the Bank Wait</span><span class="h-chip">Apply in 60 Seconds</span><span class="h-chip">No Collateral Needed</span><span class="h-chip">$10K–$1M, Fast</span><span class="h-chip">Soft Credit Pull Only</span><span class="h-chip">Money When You Need It</span><span class="h-chip">Bad Credit Considered</span></div>
+      <div class="d-list" style="margin-top:10px">
+        <div class="d-item">Same-day decisions and funding in as little as 24 hours. Apply in 60 seconds, soft pull.</div>
+        <div class="d-item">Don't wait weeks on a bank. $10K–$1M, no collateral, costs shown upfront. Bad credit OK.</div>
+        <div class="d-item">Funding fast when timing matters. Revenue-based — approved on sales, not just credit.</div>
+        <div class="d-item">Real specialists move fast. Pre-qualify in 60 seconds, no obligation, no score impact.</div>
+      </div>
+    </div>
+
+    <div class="ag"><h4>AG-B2 · Bad Credit / Easy Qualify 🔥 <span class="lp">?h=badcredit</span></h4>
+      <span class="lbl">Keywords</span>
+      <pre class="kw"><span class="ph">"business funding bad credit"</span>   <span class="ph">"merchant cash advance bad credit"</span>
+<span class="ph">"business cash advance bad credit"</span>   <span class="ph">"business loan bad credit no collateral"</span>
+<span class="ph">"easy business funding"</span>   <span class="ph">"business funding low credit score"</span></pre>
+      <span class="lbl">RSA — Bad Credit <span class="count">11 H · 4 D</span></span>
+      <div class="chips"><span class="h-chip">Bad Credit? You May Qualify</span><span class="h-chip">Funding for 550+ Credit</span><span class="h-chip">Approved on Revenue</span><span class="h-chip">No Collateral Required</span><span class="h-chip">Soft Credit Check Only</span><span class="h-chip">Won't Affect Your Credit</span><span class="h-chip">Get $10K–$1M</span><span class="h-chip">Funded in 24 Hours</span><span class="h-chip">Less-Than-Perfect Credit OK</span><span class="h-chip">Apply in 60 Seconds</span><span class="h-chip">Real Specialists Help</span></div>
+      <div class="d-list" style="margin-top:10px">
+        <div class="d-item">Less-than-perfect credit? We consider 550+ and approve on your sales, not just your score.</div>
+        <div class="d-item">Checking your options won't affect your credit — soft pull only. $10K–$1M, no collateral.</div>
+        <div class="d-item">Bad credit doesn't have to stop you. Funds in as fast as 24 hours. Apply in 60 seconds.</div>
+        <div class="d-item">Approved on revenue, not credit history. Real specialists, costs shown upfront, no obligation.</div>
+      </div>
+    </div>
+
+    <div class="ag"><h4>AG-B3 · Apply / Get Funded Now 🔥 <span class="lp">?h=apply</span></h4>
+      <span class="lbl">Keywords</span>
+      <pre class="kw"><span class="ex">[apply for merchant cash advance]</span>
+<span class="ph">"apply for business funding"</span>   <span class="ph">"apply for merchant cash advance"</span>
+<span class="ph">"get a merchant cash advance"</span>   <span class="ph">"get business funding today"</span>
+<span class="ph">"get business funding now"</span>   <span class="ph">"business funding online application"</span></pre>
+      <span class="lbl">RSA — Apply <span class="count">10 H · 4 D</span></span>
+      <div class="chips"><span class="h-chip">Apply for Business Funding</span><span class="h-chip">Apply in 60 Seconds</span><span class="h-chip">Get Funded This Week</span><span class="h-chip">Pre-Qualify Now</span><span class="h-chip">Funded in 24 Hours</span><span class="h-chip">$10K–$1M Available</span><span class="h-chip">Soft Credit Pull Only</span><span class="h-chip">No Collateral Required</span><span class="h-chip">Start Your Application</span><span class="h-chip">See Your Options Now</span></div>
+      <div class="d-list" style="margin-top:10px">
+        <div class="d-item">Apply in 60 seconds with a soft credit pull. See your options with no obligation.</div>
+        <div class="d-item">Get $10K–$1M in working capital — funds in as fast as 24 hours after signing.</div>
+        <div class="d-item">Quick one-page application. Approved on revenue, 550+ welcome, no collateral needed.</div>
+        <div class="d-item">Start now and a real funding specialist will walk you through every number, upfront.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPAIGN C -->
+<section id="c">
+  <div class="sechead"><span class="n">05</span><h2>Campaign C · Big-Ticket</h2></div>
+  <p class="sub">Larger funding intent — bigger deals carry the margin. Weight budget here.</p>
+  <div class="camp c-c">
+    <h3>Campaign C — MCA · Big-Ticket <span class="pill amber">margin lever 💰</span></h3>
+
+    <div class="ag"><h4>AG-C1 · Large Funding <span class="lp">?h=bigticket</span></h4>
+      <span class="lbl">Keywords</span>
+      <pre class="kw"><span class="ph">"100k business loan"</span>   <span class="ph">"100000 business funding"</span>   <span class="ph">"250k business funding"</span>
+<span class="ph">"large business cash advance"</span>   <span class="ph">"large merchant cash advance"</span>
+<span class="ph">"big business funding"</span>   <span class="ph">"500k business funding"</span>   <span class="ph">"high revenue business funding"</span></pre>
+    </div>
+    <div class="ag"><h4>AG-C2 · Big-Ticket Industries <span class="lp">?h=bigticket</span></h4>
+      <span class="lbl">Keywords</span>
+      <pre class="kw"><span class="ph">"construction business funding"</span>   <span class="ph">"trucking business funding"</span>
+<span class="ph">"restaurant business funding"</span>   <span class="ph">"medical practice funding"</span>
+<span class="ph">"manufacturing business funding"</span>   <span class="ph">"wholesale business funding"</span></pre>
+    </div>
+
+    <span class="lbl" style="margin-top:18px">RSA — Big-Ticket <span class="count">10 H · 4 D</span></span>
+    <div class="chips"><span class="h-chip">$100K–$1M Business Funding</span><span class="h-chip">Large Working Capital</span><span class="h-chip">Big Funding, Fast</span><span class="h-chip">Fund Your Next Expansion</span><span class="h-chip">$250K+ Available</span><span class="h-chip">Funded in 24 Hours</span><span class="h-chip">No Collateral Required</span><span class="h-chip">Revenue-Based Funding</span><span class="h-chip">For Growing Businesses</span><span class="h-chip">Apply in 60 Seconds</span></div>
+    <div class="d-list" style="margin-top:10px">
+      <div class="d-item">Need serious capital? $100K–$1M in working capital, funded in as fast as 24 hours.</div>
+      <div class="d-item">For established, higher-revenue businesses. No collateral, revenue-based, costs upfront.</div>
+      <div class="d-item">Fund expansion, equipment, payroll or inventory at scale. Soft pull, apply in 60 seconds.</div>
+      <div class="d-item">$850M+ funded across all 50 states. A real specialist structures the right amount for you.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPAIGN D -->
+<section id="d">
+  <div class="sechead"><span class="n">06</span><h2>Campaign D · Competitor</h2></div>
+  <p class="sub">Conquesting — small budget. "Alternative" terms only; never name rivals in ad text.</p>
+  <div class="camp c-d">
+    <h3>Campaign D — MCA · Competitor <span class="pill purp">small budget</span></h3>
+    <div class="ag"><h4>AG-D1 · Alternatives <span class="lp">?h=mca</span></h4>
+      <span class="lbl">Keywords</span>
+      <pre class="kw"><span class="ph">"ondeck alternative"</span>   <span class="ph">"credibly alternative"</span>   <span class="ph">"lendio alternative"</span>
+<span class="ph">"national funding alternative"</span>   <span class="ph">"best merchant cash advance"</span>   <span class="ph">"top business funding companies"</span></pre>
+      <span class="lbl">RSA — Competitor <span class="count">8 H · 4 D</span></span>
+      <div class="chips"><span class="h-chip">A Smarter Funding Option</span><span class="h-chip">Compare Business Funding</span><span class="h-chip">$10K–$1M, 550+ OK</span><span class="h-chip">Funded in 24 Hours</span><span class="h-chip">No Collateral Required</span><span class="h-chip">More Inclusive Than Banks</span><span class="h-chip">Real Specialists, Real Funding</span><span class="h-chip">Apply in 60 Seconds</span></div>
+      <div class="d-list" style="margin-top:10px">
+        <div class="d-item">Looking at business funding? Compare us: $10K–$1M, 550+ welcome, funds in as fast as 24 hrs.</div>
+        <div class="d-item">Soft credit pull, no collateral, costs shown upfront. Real specialists, not a marketplace.</div>
+        <div class="d-item">Approved on revenue, not just credit. Pre-qualify in 60 seconds with no obligation.</div>
+        <div class="d-item">$850M+ funded, 4.9★ on Trustpilot, all 50 states. See if there's a better fit for you.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEGATIVES -->
+<section id="neg">
+  <div class="sechead"><span class="n">07</span><h2>Shared Negative Keywords</h2></div>
+  <p class="sub">One list across A/B/C/D. Phrase/broad. Re-mine search terms weekly.</p>
+  <div class="grid2">
+    <div class="neg"><h4>Wrong product / consumer</h4><pre>personal · personal loan · consumer · payday · payday loan · student · student loan · mortgage · home loan · auto loan · car loan · credit card · 401k · sba · sba loan · ppp</pre></div>
+    <div class="neg"><h4>Freebie / impossible claims</h4><pre>free · grant · grants · government grant · free money · no credit check · 0 interest · interest free · no interest · guaranteed · guaranteed approval</pre></div>
+    <div class="neg"><h4>Thin / no-margin intent</h4><pre>1000 · 2000 dollar · micro loan · microloan · small personal · 500 dollar · cash app</pre></div>
+    <div class="neg"><h4>Jobs / brokers / education</h4><pre>job · jobs · salary · career · hiring · resume · become a broker · broker training · how to become · iso agent · mca broker · mca leads · buy leads · leads for sale · course · training · certification · how to start mca</pre></div>
+    <div class="neg"><h4>Research / non-buyer</h4><pre>what is · what are · meaning · definition · how does · how do · explained · calculator · vs · versus · wiki · investopedia · reddit · pdf · template · contract template · example</pre></div>
+    <div class="neg"><h4>Distress / legal</h4><pre>lawsuit · sue · sued · settlement · debt relief · debt consolidation · debt settlement · get out of · cancel · default · collections · scam · complaints · reviews · lawyer · attorney · predatory · ripoff</pre></div>
+  </div>
+</section>
+
+<!-- ASSETS -->
+<section id="assets">
+  <div class="sechead"><span class="n">08</span><h2>Assets (Account / Campaign Level)</h2></div>
+  <p class="sub">Boost CTR &amp; ad rank. Final URLs carry the dynamic-LP param.</p>
+
+  <div class="acard" style="margin-bottom:14px"><h4>Sitelinks (6)</h4>
+    <table class="sl">
+      <tr><td>How It Works</td><td>Soft pull, fund in 24 hrs</td><td><span class="u">/funding/working-capital/?h=mca</span></td></tr>
+      <tr><td>Who Qualifies</td><td>550+, 6+ months, $10K/mo</td><td><span class="u">/funding/working-capital/?h=badcredit</span></td></tr>
+      <tr><td>Get $100K–$1M</td><td>Large working capital</td><td><span class="u">/funding/working-capital/?h=bigticket</span></td></tr>
+      <tr><td>Same-Day Funding</td><td>Decision in 24 hours</td><td><span class="u">/funding/working-capital/?h=sameday</span></td></tr>
+      <tr><td>Industries We Fund</td><td>50+ industries, 50 states</td><td><span class="u">/funding/industries/</span></td></tr>
+      <tr><td>Pre-Qualify in 60s</td><td>Soft pull, no obligation</td><td><span class="u">/funding/working-capital/?h=apply</span></td></tr>
+    </table>
+  </div>
+
+  <div class="grid2">
+    <div class="acard"><h4>Callouts (10)</h4><ul>
+      <li>24-Hour Funding</li><li>No Collateral</li><li>Soft Credit Pull</li><li>550+ Credit OK</li><li>$850M+ Funded</li><li>All 50 States</li><li>Bad Credit Welcome</li><li>Real Specialists</li><li>Revenue-Based</li><li>Costs Shown Upfront</li>
+    </ul></div>
+    <div class="acard"><h4>Structured Snippet — Service catalog</h4><ul>
+      <li>Working Capital</li><li>Revenue-Based Funding</li><li>Same-Day Funding</li><li>Bad-Credit Funding</li><li>Large Funding</li>
+    </ul></div>
+    <div class="acard"><h4>Call &amp; Lead form</h4><ul>
+      <li>Call: (888) 744-8119</li><li>Call reporting on</li><li>≥60s call = Lead</li><li>Lead form: "See How Much You Qualify For"</li>
+    </ul></div>
+    <div class="acard"><h4>Branding</h4><ul>
+      <li>Business name: LendPeak</li><li>Logo asset</li><li>Image assets (add later)</li><li>Promotion: none</li>
+    </ul></div>
+  </div>
+</section>
+
+</div>
+<footer>LendPeak MCA · Google Ads Campaign Blueprint · Internal · Match types: <code>[exact]</code> <code>"phrase"</code></footer>
+</body>
+</html>
