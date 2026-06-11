@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Reply to BrandPush (Camilla)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#0FB97D;--green-d:#0a9e6a;--amber:#e0a619;--bg:#0e1726;--card:#16213a;--line:#26344f;--text:#eaf1fb;--muted:#9fb1cc}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:15.5px/1.6 'Inter',system-ui,Arial,sans-serif}
+  .wrap{max-width:700px;margin:0 auto;padding:30px 20px 60px}
+  h1{font-family:'Sora',sans-serif;font-size:22px;margin:0 0 4px}
+  h2{font-family:'Sora',sans-serif;font-size:15px;margin:24px 0 6px}
+  .sub{color:var(--muted);font-size:13.5px;margin:0 0 14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:14px 0;overflow:hidden}
+  .card .head{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid var(--line);background:#101a2e}
+  .card .head .lbl{font-family:'Sora';font-weight:700;font-size:13px}
+  .card .head .lbl small{display:block;color:var(--muted);font-weight:500;font-size:11.5px;font-family:'Inter'}
+  .copy{background:var(--green);color:#04241a;border:0;font-family:'Sora';font-weight:700;font-size:12.5px;padding:8px 14px;border-radius:8px;cursor:pointer;transition:.15s;white-space:nowrap}
+  .copy:hover{background:#13d28e}.copy.done{background:#0a9e6a;color:#fff}
+  pre{margin:0;padding:16px;white-space:pre-wrap;word-wrap:break-word;font-family:'Inter';font-size:14.5px;line-height:1.65}
+  .fields{background:#13243a;border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:13.5px}
+  .fields code{background:#0c1626;color:var(--amber);padding:1px 6px;border-radius:5px;font-size:12.5px}
+  .tip{color:var(--muted);font-size:12.5px;margin-top:14px;border-left:3px solid var(--green);padding-left:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>↩️ Reply to BrandPush (Camilla)</h1>
+  <p class="sub">Short, sharp — locks the 3 deal-makers + confirms the Authority outlets, with a recurring-rate hook. Hit Reply, paste, send.</p>
+
+  <h2>Subject</h2>
+  <div class="card">
+    <div class="head"><div class="lbl">Keep the thread / subject</div><button class="copy" data-t="subj">Copy</button></div>
+    <pre id="subj">Re: BrandPush — a few questions before we place the first order</pre>
+  </div>
+
+  <h2>Email body</h2>
+  <div class="card">
+    <div class="head"><div class="lbl">Reply to Camilla<small>fill in name / email / phone at the bottom</small></div><button class="copy" data-t="body">Copy</button></div>
+    <pre id="body">Hi Camilla,
+
+Thanks — this is really helpful.
+
+We're focused on building brand visibility in search for a finance/business client, so the Authority package looks like the best fit. Before we place the first order, a few quick questions:
+
+1. Do the published articles stay live permanently, or are they removed after a set period?
+
+2. Will they be indexed by Google and able to rank for a brand-name search? Could you share one live sample URL from a past finance/business client?
+
+3. Are the links do-follow, and are the articles published as normal posts (not tagged "sponsored" or set to no-index)?
+
+4. Could you confirm exactly which outlets are included in the Authority package (e.g., Yahoo Finance, Business Insider, MSN, AP)?
+
+We'll supply our own article, so no writing package needed. And since we run placements regularly across several clients, we'd also appreciate your best recurring / agency rate for ongoing volume.
+
+Happy to get started as soon as these are confirmed — looking forward to your reply.
+
+Best regards,
+[Your Name]
+GCALIT LLC
+[Email] · [Phone]</pre>
+  </div>
+
+  <div class="fields">
+    Only blanks to fill: <code>[Your Name]</code> · <code>[Email]</code> · <code>[Phone]</code> — your company (<b>GCALIT LLC</b>) is already in.
+  </div>
+
+  <p class="tip">Questions 1–3 are the deal-makers — if she dodges "permanent," "indexed/ranks," or "do-follow," that tells you the Yahoo/MSN hits are temporary press-release copies. Q4 confirms you're actually getting the named premium outlets you're paying $595 for. The recurring-rate line keeps your cost down for resale.</p>
+</div>
+<script>
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click',function(){
+      var t=document.getElementById(b.dataset.t).innerText;
+      navigator.clipboard.writeText(t).then(function(){
+        var o=b.textContent;b.textContent='Copied ✓';b.classList.add('done');
+        setTimeout(function(){b.textContent=o;b.classList.remove('done');},1600);
+      });
+    });
+  });
+</script>
+</body>
+</html>
