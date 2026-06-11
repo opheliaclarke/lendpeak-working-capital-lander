@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>PR Vendors — Recipients &amp; Emails</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#0FB97D;--green-d:#0a9e6a;--amber:#e0a619;--bg:#0e1726;--card:#16213a;--line:#26344f;--text:#eaf1fb;--muted:#9fb1cc}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:15.5px/1.6 'Inter',system-ui,Arial,sans-serif}
+  .wrap{max-width:680px;margin:0 auto;padding:30px 20px 60px}
+  h1{font-family:'Sora',sans-serif;font-size:22px;margin:0 0 4px}
+  h2{font-family:'Sora',sans-serif;font-size:15px;margin:26px 0 6px}
+  .sub{color:var(--muted);font-size:13.5px;margin:0 0 14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:14px 0;overflow:hidden}
+  .card .head{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid var(--line);background:#101a2e}
+  .card .head .lbl{font-family:'Sora';font-weight:700;font-size:13px}
+  .card .head .lbl small{display:block;color:var(--muted);font-weight:500;font-size:11.5px;font-family:'Inter'}
+  .copy{background:var(--green);color:#04241a;border:0;font-family:'Sora';font-weight:700;font-size:12.5px;padding:8px 14px;border-radius:8px;cursor:pointer;transition:.15s;white-space:nowrap}
+  .copy:hover{background:#13d28e}.copy.done{background:#0a9e6a;color:#fff}
+  pre{margin:0;padding:16px;white-space:pre-wrap;word-wrap:break-word;font-family:'Inter';font-size:14.5px;line-height:1.7}
+  .form{background:#13243a;border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:13.8px}
+  .form a{color:var(--amber);text-decoration:none}.form a:hover{text-decoration:underline}
+  .form div{margin:6px 0}
+  .tip{color:var(--muted);font-size:12.5px;margin-top:16px;border-left:3px solid var(--green);padding-left:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>📇 PR Vendors — Recipients &amp; Emails</h1>
+  <p class="sub">All in one column. Addresses are the vendors' publicly-listed support / sales / contact emails.</p>
+
+  <h2>1 · Receiver + email <span class="sub" style="display:inline">(7 with direct emails)</span></h2>
+  <div class="card">
+    <div class="head"><div class="lbl">Name &amp; email — one per line</div><button class="copy" data-t="list">Copy</button></div>
+    <pre id="list">PRNEWS.IO Team — support@prnews.io
+Collaborator.pro Team — support@collaborator.pro
+WhitePress Team — info@whitepress.com
+Baden Bower (Sales) — sales@badenbower.com
+Spynn Team — contact@spynn.co
+Imperium Group (Sales) — leads@imperium-pr.com
+BrandPush Team — support@brandpush.co</pre>
+  </div>
+
+  <h2>2 · Emails only <span class="sub" style="display:inline">(paste into To / BCC)</span></h2>
+  <div class="card">
+    <div class="head"><div class="lbl">Quick paste</div><button class="copy" data-t="emails">Copy</button></div>
+    <pre id="emails">support@prnews.io, support@collaborator.pro, info@whitepress.com, sales@badenbower.com, contact@spynn.co, leads@imperium-pr.com, support@brandpush.co</pre>
+  </div>
+
+  <h2>3 · No public email — use their form</h2>
+  <div class="form">
+    <div><b>Nextenco</b> → <a href="https://nextenco.com/contact-us/" target="_blank" rel="noopener">nextenco.com/contact-us/</a></div>
+    <div><b>EIN Presswire</b> → <a href="https://www.einpresswire.com/contact" target="_blank" rel="noopener">einpresswire.com/contact</a> · phone +1 202-335-3939</div>
+    <div><b>Newswire.com</b> → <a href="https://www.newswire.com/contact" target="_blank" rel="noopener">newswire.com/contact</a></div>
+  </div>
+
+  <p class="tip">Send individually or BCC — never CC all vendors on one email. A couple of addresses are role inboxes (support@ / sales@), which is fine for a rate-card request. Confirm Imperium's <code>leads@imperium-pr.com</code> on first reply, as it's on a slightly different domain from their main site.</p>
+</div>
+<script>
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click',function(){
+      var t=document.getElementById(b.dataset.t).innerText;
+      navigator.clipboard.writeText(t).then(function(){
+        var o=b.textContent;b.textContent='Copied ✓';b.classList.add('done');
+        setTimeout(function(){b.textContent=o;b.classList.remove('done');},1600);
+      });
+    });
+  });
+</script>
+</body>
+</html>
