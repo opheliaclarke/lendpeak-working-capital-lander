@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Fortune &amp; Investing.com — provider questions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#0FB97D;--green-d:#0a9e6a;--amber:#e0a619;--bg:#0e1726;--card:#16213a;--line:#26344f;--text:#eaf1fb;--muted:#9fb1cc}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:15.5px/1.6 'Inter',system-ui,Arial,sans-serif}
+  .wrap{max-width:700px;margin:0 auto;padding:30px 20px 60px}
+  h1{font-family:'Sora',sans-serif;font-size:22px;margin:0 0 4px}
+  .sub{color:var(--muted);font-size:13.5px;margin:0 0 18px}
+  h2{font-family:'Sora',sans-serif;font-size:15px;margin:26px 0 6px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:14px 0;overflow:hidden}
+  .card .head{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid var(--line);background:#101a2e}
+  .card .head .lbl{font-family:'Sora';font-weight:700;font-size:13px}
+  .card .head .lbl small{display:block;color:var(--muted);font-weight:500;font-size:11.5px;font-family:'Inter'}
+  .copy{background:var(--green);color:#04241a;border:0;font-family:'Sora';font-weight:700;font-size:12.5px;padding:8px 14px;border-radius:8px;cursor:pointer;white-space:nowrap}
+  .copy:hover{background:#13d28e}.copy.done{background:#0a9e6a;color:#fff}
+  pre{margin:0;padding:16px;white-space:pre-wrap;word-wrap:break-word;font-family:'Inter';font-size:14.5px;line-height:1.6}
+  .tip{color:var(--muted);font-size:12.5px;margin-top:16px;border-left:3px solid var(--green);padding-left:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>💬 Fortune &amp; Investing.com — questions before we buy</h1>
+  <p class="sub">Small, messenger-ready. Same checks each: real main domain · permanent · indexed · do-follow link · TAT · sample.</p>
+
+  <h2>1 · To VIKVarsh — Fortune ($1,900)</h2>
+  <div class="card">
+    <div class="head"><div class="lbl">Fortune — message</div><button class="copy" data-t="fortune" type="button">Copy</button></div>
+    <pre id="fortune">Hey! Interested in the Fortune placement. Quick questions before I confirm:
+
+1. Is it published on the main fortune.com site (not a regional/sub edition)?
+2. Permanent / lifetime, or does it get removed after a few months?
+3. Indexed on Google?
+4. Do-follow link insertion allowed — and how many links?
+5. What's the TAT once I send the article?
+6. Got a live sample URL?
+
+I've got a steady flow of these coming if it works out 🙏</pre>
+  </div>
+
+  <h2>2 · To JDPDUTA — Investing.com ($900)</h2>
+  <div class="card">
+    <div class="head"><div class="lbl">Investing.com — message</div><button class="copy" data-t="investing" type="button">Copy</button></div>
+    <pre id="investing">Hey! Looking at the Investing.com placement ($900). A few quick questions:
+
+1. Is it a real article on the main investing.com domain (not a sub/translated edition)?
+2. Permanent / lifetime, or time-limited?
+3. Indexed on Google?
+4. Do-follow link insertion — and how many links allowed?
+5. TAT after I send the content?
+6. Got a live sample URL?
+
+Got a regular run of these coming if it's solid 🙏</pre>
+  </div>
+
+  <p class="tip">The <b>"main domain"</b> question is the key one — confirms it's real fortune.com / investing.com, not a regional edition or look-alike. A live sample URL settles everything else. Don't pay until both come back clean.</p>
+</div>
+<script>
+/* Bulletproof copy: modern clipboard in secure context, execCommand fallback, manual-select last resort */
+(function(){
+  function flash(btn, ok){
+    if(!btn.getAttribute('data-orig')) btn.setAttribute('data-orig', btn.textContent);
+    var orig = btn.getAttribute('data-orig');
+    btn.textContent = ok ? 'Copied ✓' : 'Select + ⌘/Ctrl-C';
+    btn.classList.toggle('done', ok);
+    setTimeout(function(){ btn.textContent = orig; btn.classList.remove('done'); }, 1700);
+  }
+  function legacyCopy(text, srcEl){
+    try{
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly','');
+      ta.style.position='fixed'; ta.style.top='0'; ta.style.left='-9999px';
+      document.body.appendChild(ta);
+      ta.focus(); ta.select();
+      try{ ta.setSelectionRange(0, text.length); }catch(e){}
+      var ok = false;
+      try{ ok = document.execCommand('copy'); }catch(e){ ok = false; }
+      document.body.removeChild(ta);
+      if(!ok && srcEl){ try{ var r=document.createRange(); r.selectNodeContents(srcEl); var s=window.getSelection(); s.removeAllRanges(); s.addRange(r); }catch(e){} }
+      return ok;
+    }catch(e){ return false; }
+  }
+  function doCopy(btn){
+    var src = document.getElementById(btn.getAttribute('data-t'));
+    if(!src){ flash(btn, false); return; }
+    var text = src.innerText;
+    if(navigator.clipboard && navigator.clipboard.writeText && window.isSecureContext){
+      navigator.clipboard.writeText(text).then(function(){ flash(btn, true); },
+        function(){ flash(btn, legacyCopy(text, src)); });
+    } else {
+      flash(btn, legacyCopy(text, src));
+    }
+  }
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest ? e.target.closest('.copy') : null;
+    if(btn){ e.preventDefault(); doCopy(btn); }
+  });
+})();
+</script>
+</body>
+</html>
