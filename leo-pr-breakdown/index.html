@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>LendPeak — PR breakdown for Leo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0A2540;--blue:#1E63E9;--green:#0FB97D;--green-d:#0a9e6a;--amber:#b9760a;--gold:#b8860b;--bg:#f4f7fb;--card:#fff;--line:#e1e8f1;--text:#142033;--muted:#5a6b82}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 'Inter',system-ui,Arial,sans-serif}
+  h1,h2,h3{font-family:'Sora',sans-serif;color:var(--navy);letter-spacing:-.02em}
+  header{background:linear-gradient(135deg,#0A2540,#103a66);color:#fff;padding:30px 24px}
+  header h1{color:#fff;font-size:23px;margin:0 0 6px}
+  header p{margin:2px 0;color:#cfe0f5;font-size:14px}
+  .wrap{max-width:920px;margin:0 auto;padding:24px}
+  h2{font-size:19px;margin:30px 0 8px}
+  .sub{color:var(--muted);font-size:13.5px;margin:0 0 14px}
+  .msgbox{background:#0e1726;border:1px solid #26344f;border-radius:14px;overflow:hidden;margin:14px 0}
+  .msgbox .mhead{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid #26344f;background:#101a2e}
+  .msgbox .mhead .l{font-family:'Sora';font-weight:700;font-size:13px;color:#eaf1fb}
+  .msgbox .mhead .l small{display:block;color:#9fb1cc;font-weight:500;font-size:11.5px;font-family:'Inter'}
+  .copy{background:var(--green);color:#04241a;border:0;font-family:'Sora';font-weight:700;font-size:12.5px;padding:8px 14px;border-radius:8px;cursor:pointer}
+  .copy:hover{background:#13d28e}.copy.done{background:#0a9e6a;color:#fff}
+  .msgbox pre{margin:0;padding:16px;white-space:pre-wrap;word-wrap:break-word;font-family:'Inter';font-size:14px;line-height:1.6;color:#eaf1fb}
+  .cols{display:flex;flex-wrap:wrap;gap:16px;margin:14px 0}
+  .col{flex:1 1 360px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:0 4px 14px rgba(13,38,76,.06)}
+  .col.extra{border:2px solid var(--gold)}
+  .col h3{margin:0 0 4px;font-size:17px}
+  .col h3 .chip{font-size:11px;font-weight:700;font-family:'Sora';padding:2px 9px;border-radius:20px;vertical-align:middle;margin-left:6px}
+  .chip.core{background:rgba(30,99,233,.12);color:var(--blue)}
+  .chip.gold{background:rgba(184,134,11,.15);color:var(--gold)}
+  .row{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px dashed var(--line);padding:7px 0;font-size:14px}
+  .row:last-child{border-bottom:0}
+  .row .nm{font-weight:600}
+  .row .pr{font-family:'Sora';font-weight:800;color:var(--navy);white-space:nowrap}
+  .bundle{background:#eafaf3;border:1px solid #bfe9d6;border-radius:10px;padding:10px 14px;margin-top:12px;font-size:13.5px}
+  .bundle b{color:var(--navy)}
+  .total{font-family:'Sora';font-weight:800;font-size:26px;color:var(--navy);margin:6px 0 2px}
+  .total small{font-size:12px;color:var(--muted);font-weight:600}
+  .note{border-left:4px solid var(--amber);background:#fdf6e9;padding:13px 16px;border-radius:8px;margin:16px 0;font-size:13.8px}
+  .note b{color:var(--navy)}
+  .pill{display:inline-block;background:rgba(30,99,233,.1);color:var(--blue);font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:6px}
+  footer{color:var(--muted);font-size:12px;text-align:center;padding:26px;border-top:1px solid var(--line);margin-top:30px}
+</style>
+</head>
+<body>
+<header>
+  <h1>🏆 LendPeak — PR Plan &amp; Pricing for Leo</h1>
+  <p>Message + price breakdown · client-facing (no costs shown)</p>
+  <p>2026-06-14</p>
+</header>
+<div class="wrap">
+
+<h2>Message to Leo <span class="pill">copy &amp; send</span></h2>
+<div class="msgbox">
+  <div class="mhead"><div class="l">Message — paste into email / WhatsApp<small>fill in [partner] and [Your name]</small></div><button class="copy" data-t="msg" type="button">Copy</button></div>
+  <pre id="msg">Hi Leo,
+
+Quick one on the PR plan — and honestly, this turned out to be a surprisingly complex corner of the industry. I went deep on the research and picked up a ton of new things along the way, haha.
+
+Here's the breakdown:
+
+• Core Package — $1,950 (one-time): permanent features on Yahoo Finance, Associated Press, Business Insider, MarketWatch, Barchart and Digital Journal, plus syndication to 300+ news sites.
+
+• Premium add-ons: Fortune ($2,400) and Investing.com ($1,500) — or take everything together as the full Premium Package for $4,900 (saves ~$950 vs adding them separately).
+
+One honest note on how PR works: with press releases, LendPeak's name goes live on the outlet (Yahoo Finance, etc.) — but the agencies usually won't guarantee that Google indexes it, so it won't always show up as trackable data in a Google search. Contributor / guest-post placements are a step up — you get the same exposure PLUS Google indexing PLUS a do-follow link (which also strengthens the website). They cost more, but they're the "complete" version.
+
+My suggestion: start with Core for the visibility, and we layer in the premium / contributor pieces as we go.
+
+Happy to walk you and [partner] through it whenever.
+
+Talk soon,
+[Your name]</pre>
+</div>
+
+<h2>Prices at a glance <span class="pill">screenshot for Leo</span></h2>
+<div class="cols">
+  <div class="col">
+    <h3>Core Package <span class="chip core">START HERE</span></h3>
+    <div class="total">$1,950 <small>/ one-time</small></div>
+    <div class="row"><span class="nm">Yahoo Finance</span><span class="pr">✓</span></div>
+    <div class="row"><span class="nm">Associated Press</span><span class="pr">✓</span></div>
+    <div class="row"><span class="nm">Business Insider</span><span class="pr">✓</span></div>
+    <div class="row"><span class="nm">MarketWatch</span><span class="pr">✓</span></div>
+    <div class="row"><span class="nm">Barchart</span><span class="pr">✓</span></div>
+    <div class="row"><span class="nm">Digital Journal</span><span class="pr">✓</span></div>
+    <div class="row"><span class="nm">+ 300 syndicated news sites</span><span class="pr">✓</span></div>
+  </div>
+  <div class="col extra">
+    <h3>Premium add-ons <span class="chip gold">THE BIG NAMES</span></h3>
+    <div class="row"><span class="nm">⭐ Fortune</span><span class="pr">$2,400</span></div>
+    <div class="row"><span class="nm">⭐ Investing.com</span><span class="pr">$1,500</span></div>
+    <div class="row"><span class="nm">More marquee names (e.g. Forbes)</span><span class="pr">on request</span></div>
+    <div class="bundle"><b>Bundle everything → Premium Package $4,900</b> (Core + Fortune + Investing.com — saves ~$950).</div>
+  </div>
+</div>
+
+<div class="note"><b>The PR vs Contributor difference, in one line:</b> <b>PR / press release</b> = your name on the outlet, but indexing isn't guaranteed (may not appear in Google). <b>Contributor / guest post</b> = PR exposure <i>+</i> guaranteed Google indexing <i>+</i> a do-follow link. More cost, more complete — worth it for the marquee pieces.</div>
+
+<p class="sub">This page is client-clean — <b>no costs/margins shown.</b> Copy the message, screenshot the two cards to go with it.</p>
+
+</div>
+<footer>LendPeak / GCALIT · PR plan &amp; pricing for Leo · 2026-06-14 · prices one-time, client-facing.</footer>
+<script>
+/* Bulletproof copy: modern clipboard in secure context, execCommand fallback, manual-select last resort */
+(function(){
+  function flash(btn, ok){
+    if(!btn.getAttribute('data-orig')) btn.setAttribute('data-orig', btn.textContent);
+    var orig = btn.getAttribute('data-orig');
+    btn.textContent = ok ? 'Copied ✓' : 'Select + ⌘/Ctrl-C';
+    btn.classList.toggle('done', ok);
+    setTimeout(function(){ btn.textContent = orig; btn.classList.remove('done'); }, 1700);
+  }
+  function legacyCopy(text, srcEl){
+    try{
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly','');
+      ta.style.position='fixed'; ta.style.top='0'; ta.style.left='-9999px';
+      document.body.appendChild(ta);
+      ta.focus(); ta.select();
+      try{ ta.setSelectionRange(0, text.length); }catch(e){}
+      var ok = false;
+      try{ ok = document.execCommand('copy'); }catch(e){ ok = false; }
+      document.body.removeChild(ta);
+      if(!ok && srcEl){ try{ var r=document.createRange(); r.selectNodeContents(srcEl); var s=window.getSelection(); s.removeAllRanges(); s.addRange(r); }catch(e){} }
+      return ok;
+    }catch(e){ return false; }
+  }
+  function doCopy(btn){
+    var src = document.getElementById(btn.getAttribute('data-t'));
+    if(!src){ flash(btn, false); return; }
+    var text = src.innerText;
+    if(navigator.clipboard && navigator.clipboard.writeText && window.isSecureContext){
+      navigator.clipboard.writeText(text).then(function(){ flash(btn, true); },
+        function(){ flash(btn, legacyCopy(text, src)); });
+    } else {
+      flash(btn, legacyCopy(text, src));
+    }
+  }
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest ? e.target.closest('.copy') : null;
+    if(btn){ e.preventDefault(); doCopy(btn); }
+  });
+})();
+</script>
+</body>
+</html>
