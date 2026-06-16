@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>LendPeak — Google Ads Launch Readiness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0A2540;--blue:#1E63E9;--green:#0FB97D;--green-d:#0a9e6a;--amber:#b9760a;--red:#c0392b;--bg:#f4f7fb;--card:#fff;--line:#e1e8f1;--text:#142033;--muted:#5a6b82}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 'Inter',system-ui,Arial,sans-serif}
+  h1,h2,h3{font-family:'Sora',sans-serif;color:var(--navy);letter-spacing:-.02em}
+  header{background:linear-gradient(135deg,#0A2540,#103a66);color:#fff;padding:28px 24px}
+  header h1{color:#fff;font-size:22px;margin:0 0 6px}
+  header p{margin:2px 0;color:#cfe0f5;font-size:14px}
+  .wrap{max-width:880px;margin:0 auto;padding:22px}
+  h2{font-size:18px;margin:26px 0 6px}
+  .sub{color:var(--muted);font-size:13.5px;margin:0 0 12px}
+  .item{display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 14px;margin:8px 0;box-shadow:0 3px 10px rgba(13,38,76,.05);font-size:14px}
+  .ic{font-size:15px;line-height:1.4;flex:0 0 auto}
+  .item b{color:var(--navy)}
+  .tag{font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap;margin-left:6px}
+  .ok{background:rgba(15,185,125,.16);color:var(--green-d)}
+  .fix{background:rgba(232,146,12,.16);color:var(--amber)}
+  .need{background:rgba(30,99,233,.12);color:var(--blue)}
+  .callout{border-left:4px solid var(--amber);background:#fdf6e9;padding:12px 15px;border-radius:8px;margin:14px 0;font-size:13.8px}
+  .callout.g{border-color:var(--green);background:#eafaf3}
+  .callout b{color:var(--navy)}
+  ol{margin:6px 0;padding-left:20px}li{margin:6px 0}
+  footer{color:var(--muted);font-size:12px;text-align:center;padding:24px;border-top:1px solid var(--line);margin-top:28px}
+</style>
+</head>
+<body>
+<header>
+  <h1>🚀 LendPeak — Google Ads Launch Readiness</h1>
+  <p>Running on GCALIT's account + credit line · 5 landing pages reviewed</p>
+  <p>2026-06-16</p>
+</header>
+<div class="wrap">
+
+<div class="callout g"><b>Smart call running it on GCALIT's credit-line account.</b> You're right — postpay/monthly invoicing, payment verified from day 1, and a direct support line are all real advantages. No need for a fresh account.</div>
+
+<h2>1 · What's actually required to launch</h2>
+<p class="sub">First, a myth-buster: <b>there's no exam/"certification" needed to run ads</b> (Skillshop certs are optional). The real gates are two verifications + tracking:</p>
+<div class="item"><span class="ic">✅</span><div><b>Advertiser identity verification</b> — almost certainly already done on the GCALIT account (it's an established credit-line account). Just confirm it shows "Verified."</div></div>
+<div class="item"><span class="ic">⚠️</span><div><b>Financial-products &amp; services verification (US)</b> <span class="tag fix">THE KEY GATE</span> — lenders must clear Google's financial-services verification. MCA is B2B/commercial, so it escapes the consumer personal-loan rules (36% APR / 61-day) — but Google still verifies the advertiser. <b>Catch:</b> since GCALIT advertises <i>for</i> LendPeak, Google may want the verification (and any licensing) in <b>LendPeak's</b> name or a letter authorizing GCALIT. That's the main paperwork to line up.</div></div>
+<div class="item"><span class="ic">⚙️</span><div><b>Conversion tracking</b> — install the Google Ads tag + GA4 on all <code>/lp/</code> pages, and wire the 2 actions we designed: <b>Lead</b> (form submit) + <b>Converted Lead</b> (funded deal, offline import) with Enhanced Conversions (hashed email/phone + gclid).</div></div>
+
+<h2>2 · The 5 landing pages — reviewed</h2>
+<p class="sub">All live and well-built: pre-qual forms, Privacy + Terms, the "MCA is not a loan" disclosure, state-specific disclosures, phone (888) 744-8119, factor-rate transparency. Three things to tidy before ads:</p>
+<div class="item"><span class="ic">⚠️</span><div><b>"Bad credit" wording</b> <span class="tag fix">FIX</span> — "bad credit OK / 550+ credit OK" can draw finance disapprovals. Lead with <b>"approved on your revenue, not your credit"</b> and soften the headline on <code>/lp/bad-credit</code> (it's the highest-risk page).</div></div>
+<div class="item"><span class="ic">⚠️</span><div><b>Add a business mailing address</b> <span class="tag fix">FIX</span> — finance pages + advertiser verification expect a physical address in the footer (only the phone is there now).</div></div>
+<div class="item"><span class="ic">⚠️</span><div><b>Confirm the form backend</b> <span class="tag fix">FIX</span> — the visible step is just "funding amount." The name/email/phone steps must actually <b>post to the CRM</b> and <b>fire the Lead conversion</b> + pass gclid/hashed email/phone. This was the one pending backend task in the deploy guide.</div></div>
+<div class="item"><span class="ic">✅</span><div>Speed claims are already qualified ("typical, not guaranteed") — keep that wording. Good.</div></div>
+
+<h2>3 · Lead test — honest status</h2>
+<div class="callout"><b>I can't submit the forms myself</b> (my tools only read pages — and pushing fake data into your live CRM would create junk + maybe a real sales call). <b>Please run one real test lead</b> on <code>/lp/apply</code> and check two things: (1) it lands in the CRM, and (2) the Google Ads <b>Lead</b> conversion fires (use Google Tag Assistant). That's the only true test — do it before spend goes live.</div>
+
+<h2>4 · What we need from Leo</h2>
+<ol>
+<li><b>LendPeak entity docs</b> for Google's financial-services verification — legal name, business registration/incorporation, EIN, and any <b>state lending / MCA licenses or registrations</b>.</li>
+<li>A short <b>authorization</b> that GCALIT may advertise on LendPeak's behalf (in case Google asks).</li>
+<li><b>Web-team access</b> to add the Google Ads + GA4 tags on the <code>/lp/</code> pages, and to confirm the form is wired to the CRM + fires the conversion.</li>
+<li>The <b>CRM / lead endpoint</b> + how funded deals get exported (for the Converted-Lead offline import).</li>
+<li>Sign-off on the small LP fixes (bad-credit wording + add business address).</li>
+<li>Confirm <b>monthly budget</b> + <b>target states</b> (and whether to use call tracking on the (888) number).</li>
+</ol>
+
+<div class="callout g"><b>Bottom line:</b> pages are 90% there. The two things that gate launch are <b>(a) the financial-services verification (needs LendPeak's docs)</b> and <b>(b) conversion tracking + form-to-CRM wiring</b>. Get those from Leo's side and we can go live.</div>
+
+</div>
+<footer>LendPeak / GCALIT · Google Ads launch readiness · 2026-06-16 · landing pages reviewed live; verification requirements per Google Ads financial-services policy.</footer>
+</body>
+</html>
