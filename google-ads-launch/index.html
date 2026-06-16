@@ -55,20 +55,27 @@
 <div class="item"><span class="ic">⚠️</span><div><b>Confirm the form backend</b> <span class="tag fix">FIX</span> — the visible step is just "funding amount." The name/email/phone steps must actually <b>post to the CRM</b> and <b>fire the Lead conversion</b> + pass gclid/hashed email/phone. This was the one pending backend task in the deploy guide.</div></div>
 <div class="item"><span class="ic">✅</span><div>Speed claims are already qualified ("typical, not guaranteed") — keep that wording. Good.</div></div>
 
-<h2>3 · Lead test — honest status</h2>
-<div class="callout"><b>I can't submit the forms myself</b> (my tools only read pages — and pushing fake data into your live CRM would create junk + maybe a real sales call). <b>Please run one real test lead</b> on <code>/lp/apply</code> and check two things: (1) it lands in the CRM, and (2) the Google Ads <b>Lead</b> conversion fires (use Google Tag Assistant). That's the only true test — do it before spend goes live.</div>
+<h2>3 · Test leads — kit (please run these)</h2>
+<div class="callout"><b>I genuinely can't submit the forms</b> — my tools only read pages, they can't operate/POST a web form. And auto-firing fake leads into a live <b>GoHighLevel → Five9</b> pipeline could trip the dialer into real calls. So <b>you run them</b> (≈2 min each) with the kit below; I've made the data safe + easy to find and delete.</div>
+<div class="item"><span class="ic">🧪</span><div><b>Use this exact test data on all 5 pages</b> (<code>/apply</code>, <code>/mca</code>, <code>/same-day</code>, <code>/bad-credit</code>, <code>/big-ticket</code>):<br>
+Name: <b>TEST LEAD — do not call</b> · Business: <b>GCALIT TEST</b> · Email: <b>your own test inbox</b> · Phone: <b>(424) 555-0142</b> (a reserved "555-01xx" fake number — Five9 won't ring a real person) · Funding: <b>$100K–$250K</b></div></div>
+<div class="item"><span class="ic">🔗</span><div><b>Add a test gclid to each URL</b> — e.g. <code>lendpeak.com/lp/apply?gclid=TEST-GADS-001</code> (use 001–005 per page). Then confirm in GHL that the <b>gclid was captured on the lead</b> — that's what powers the funded-deal (Converted Lead) import later. This is the most important thing to verify.</div></div>
+<div class="item"><span class="ic">✅</span><div><b>In GoHighLevel, check each lead has:</b> correct page/source, the gclid, and all contact fields. <b>Then delete the 5 TEST leads.</b> Give me a heads-up when done and I'll help confirm the Google Ads <b>Lead</b> conversion is firing (Tag Assistant) before any spend.</div></div>
 
-<h2>4 · What we need from Leo</h2>
+<h2>4 · Status — what's in, what's left</h2>
+<p class="sub">Big progress — most of the gating items are now resolved:</p>
+<div class="item"><span class="ic">✅</span><div><b>Entity + docs received</b> — LendPeak Inc, 616 E Glenoaks Blvd Ste 204, Glendale CA 91207, EIN 41-4945564, filings &amp; registration. <span class="tag ok">DONE</span></div></div>
+<div class="item"><span class="ic">✅</span><div><b>CRM = GoHighLevel</b> (leads flow in) · <b>Phone = Five9</b> · <b>No certifications required</b>. <span class="tag ok">DONE</span></div></div>
+<div class="item"><span class="ic">✅</span><div><b>Letter of Authorization</b> drafted (LendPeak → GCALIT) — Leo signs on letterhead. <a href="../loa/" target="_blank" rel="noopener">Open the LOA →</a> <span class="tag ok">READY</span></div></div>
+<p class="sub" style="margin-top:14px"><b>Still needed from Leo / his web team:</b></p>
 <ol>
-<li><b>LendPeak entity docs</b> for Google's financial-services verification — legal name, business registration/incorporation, EIN, and any <b>state lending / MCA licenses or registrations</b>.</li>
-<li>A short <b>authorization</b> that GCALIT may advertise on LendPeak's behalf (in case Google asks).</li>
-<li><b>Web-team access</b> to add the Google Ads + GA4 tags on the <code>/lp/</code> pages, and to confirm the form is wired to the CRM + fires the conversion.</li>
-<li>The <b>CRM / lead endpoint</b> + how funded deals get exported (for the Converted-Lead offline import).</li>
-<li>Sign-off on the small LP fixes (bad-credit wording + add business address).</li>
-<li>Confirm <b>monthly budget</b> + <b>target states</b> (and whether to use call tracking on the (888) number).</li>
+<li><b>Install the Google Ads + GA4 tags</b> on all <code>/lp/</code> pages, and confirm the form fires the <b>Lead</b> conversion + passes <b>gclid + hashed email/phone</b> into GoHighLevel.</li>
+<li>Confirm how <b>funded deals are exported</b> from GHL (for the Converted-Lead offline import — the deal that actually proves ROI).</li>
+<li>Sign-off on the small LP fixes (soften "bad credit" wording + add the business address to footers).</li>
+<li>Confirm <b>monthly budget</b> + <b>target states</b> (and whether to add call tracking on the (888) number via Five9).</li>
 </ol>
 
-<div class="callout g"><b>Bottom line:</b> pages are 90% there. The two things that gate launch are <b>(a) the financial-services verification (needs LendPeak's docs)</b> and <b>(b) conversion tracking + form-to-CRM wiring</b>. Get those from Leo's side and we can go live.</div>
+<div class="callout g"><b>Bottom line:</b> verification paperwork is basically handled (docs + LOA). The <b>only real launch blockers left are technical</b> — get the tags installed + the form/gclid wiring confirmed (Leo's web team), run the test leads above, and we go live.</div>
 
 </div>
 <footer>LendPeak / GCALIT · Google Ads launch readiness · 2026-06-16 · landing pages reviewed live; verification requirements per Google Ads financial-services policy.</footer>

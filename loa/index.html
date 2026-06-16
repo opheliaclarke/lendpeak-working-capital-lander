@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>LendPeak → GCALIT — Letter of Authorization (Google Ads)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0A2540;--blue:#1E63E9;--green:#0FB97D;--green-d:#0a9e6a;--line:#e1e8f1;--text:#142033;--muted:#5a6b82;--bg:#eef2f7}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 'Inter',system-ui,Arial,sans-serif}
+  .bar{background:#0A2540;color:#fff;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+  .bar h1{font-family:'Sora';font-size:16px;margin:0;color:#fff;font-weight:700}
+  .bar .sub{color:#cfe0f5;font-size:12.5px}
+  .copy{background:var(--green);color:#04241a;border:0;font-family:'Sora';font-weight:700;font-size:12.5px;padding:9px 16px;border-radius:8px;cursor:pointer}
+  .copy:hover{background:#13d28e}.copy.done{background:#0a9e6a;color:#fff}
+  .wrap{max-width:780px;margin:22px auto;padding:0 16px}
+  .note{background:#fdf6e9;border-left:4px solid #b9760a;border-radius:8px;padding:11px 15px;font-size:13px;margin-bottom:16px}
+  .note b{color:var(--navy)}
+  .paper{background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 6px 22px rgba(13,38,76,.08);padding:0;overflow:hidden}
+  .paper pre{margin:0;padding:34px 40px;white-space:pre-wrap;word-wrap:break-word;font-family:'Inter';font-size:14.5px;line-height:1.75;color:#142033}
+  .lh{font-family:'Sora';font-weight:800;font-size:22px;color:var(--navy);letter-spacing:.02em}
+  footer{color:var(--muted);font-size:12px;text-align:center;padding:22px;}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div><h1>📄 Letter of Authorization — LendPeak Inc → GCALIT LLC</h1><div class="sub">Google Ads third-party / financial-services verification · template for Leo's letterhead</div></div>
+  <button class="copy" data-t="loa" type="button">Copy text</button>
+</div>
+<div class="wrap">
+  <div class="note"><b>How to use:</b> copy this, send to Leo to place on <b>LendPeak company letterhead</b>, fill the date + Google Ads Customer ID, and sign. Only what Google needs — no extra info. (Confirm "GCALIT LLC" is the exact legal entity name; adjust if not.)</div>
+  <div class="paper">
+<pre id="loa"><span class="lh">LENDPEAK INC</span>
+616 E Glenoaks Blvd, Suite 204, Glendale, CA 91207
+
+Date: ____________________
+
+
+LETTER OF AUTHORIZATION
+
+To: Google LLC — Advertiser Verification Team
+
+LendPeak Inc, a corporation located at 616 E Glenoaks Blvd, Suite 204, Glendale, CA 91207 (EIN 41-4945564), hereby authorizes GCALIT LLC to create, manage, and operate Google Ads campaigns on behalf of LendPeak Inc, and to complete any related advertiser identity and financial products and services verification.
+
+This authorization covers the advertising of LendPeak Inc's financial products and services, including merchant cash advance and business funding, via the website lendpeak.com.
+
+Google Ads Customer ID: ____________________
+
+This authorization remains valid until revoked in writing by LendPeak Inc.
+
+
+Authorized by:
+
+Signature: ____________________
+
+Name: ____________________
+
+Title: ____________________
+
+Date: ____________________
+
+
+LendPeak Inc · 616 E Glenoaks Blvd, Suite 204, Glendale, CA 91207 · EIN 41-4945564</pre>
+  </div>
+</div>
+<footer>LendPeak Inc / GCALIT LLC · Letter of Authorization template · 2026-06-16 · format per Google Ads third-party verification.</footer>
+<script>
+/* Bulletproof copy: modern clipboard in secure context, execCommand fallback, manual-select last resort */
+(function(){
+  function flash(btn, ok){
+    if(!btn.getAttribute('data-orig')) btn.setAttribute('data-orig', btn.textContent);
+    var orig = btn.getAttribute('data-orig');
+    btn.textContent = ok ? 'Copied ✓' : 'Select + ⌘/Ctrl-C';
+    btn.classList.toggle('done', ok);
+    setTimeout(function(){ btn.textContent = orig; btn.classList.remove('done'); }, 1700);
+  }
+  function legacyCopy(text, srcEl){
+    try{
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly','');
+      ta.style.position='fixed'; ta.style.top='0'; ta.style.left='-9999px';
+      document.body.appendChild(ta);
+      ta.focus(); ta.select();
+      try{ ta.setSelectionRange(0, text.length); }catch(e){}
+      var ok = false;
+      try{ ok = document.execCommand('copy'); }catch(e){ ok = false; }
+      document.body.removeChild(ta);
+      if(!ok && srcEl){ try{ var r=document.createRange(); r.selectNodeContents(srcEl); var s=window.getSelection(); s.removeAllRanges(); s.addRange(r); }catch(e){} }
+      return ok;
+    }catch(e){ return false; }
+  }
+  function doCopy(btn){
+    var src = document.getElementById(btn.getAttribute('data-t'));
+    if(!src){ flash(btn, false); return; }
+    var text = src.innerText;
+    if(navigator.clipboard && navigator.clipboard.writeText && window.isSecureContext){
+      navigator.clipboard.writeText(text).then(function(){ flash(btn, true); },
+        function(){ flash(btn, legacyCopy(text, src)); });
+    } else {
+      flash(btn, legacyCopy(text, src));
+    }
+  }
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest ? e.target.closest('.copy') : null;
+    if(btn){ e.preventDefault(); doCopy(btn); }
+  });
+})();
+</script>
+</body>
+</html>
