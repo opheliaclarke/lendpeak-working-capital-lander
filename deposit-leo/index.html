@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Message for Leo — Ad budget / funds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#0FB97D;--green-d:#0a9e6a;--bg:#0e1726;--card:#16213a;--line:#26344f;--text:#eaf1fb;--muted:#9fb1cc}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:15.5px/1.6 'Inter',system-ui,Arial,sans-serif}
+  .wrap{max-width:680px;margin:0 auto;padding:30px 20px 50px}
+  h1{font-family:'Sora',sans-serif;font-size:22px;margin:0 0 4px}
+  .sub{color:var(--muted);font-size:13.5px;margin:0 0 18px}
+  h2{font-family:'Sora',sans-serif;font-size:14px;margin:24px 0 6px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:14px 0;overflow:hidden}
+  .card .head{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid var(--line);background:#101a2e}
+  .card .head .lbl{font-family:'Sora';font-weight:700;font-size:13px}
+  .card .head .lbl small{display:block;color:var(--muted);font-weight:500;font-size:11.5px;font-family:'Inter'}
+  .copy{background:var(--green);color:#04241a;border:0;font-family:'Sora';font-weight:700;font-size:12.5px;padding:8px 14px;border-radius:8px;cursor:pointer;transition:.15s}
+  .copy:hover{background:#13d28e}.copy.done{background:#0a9e6a;color:#fff}
+  pre{margin:0;padding:16px;white-space:pre-wrap;word-wrap:break-word;font-family:'Inter';font-size:15px;line-height:1.65}
+  .tip{color:var(--muted);font-size:12.5px;margin-top:18px;border-left:3px solid var(--green);padding-left:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>💬 Message for Leo — ad budget / funds</h1>
+  <p class="sub">Same easy tone. Frames the 1% as a credit-line / account-handling cost — never called out as your cut.</p>
+
+  <div class="card">
+    <div class="head">
+      <span class="lbl">Main message<small>warm, clear, the ask sits naturally at the end</small></span>
+      <button class="copy" data-t="m1">Copy</button>
+    </div>
+    <pre id="m1">Hey Leo,
+
+Good news on the ads side — we're basically ready to roll on the LendPeak campaign. Since it's running on my credit line, there's no card to set up on your end, which keeps things clean and lets us launch without the usual billing back-and-forth.
+
+Here's how I'd suggest we handle the budget. If we run at around $500/day, that's roughly $15,000 for the first month. Because it's going through my line, I'd cover the account from my side and simply have you fund the month up front — so the spend is always sitting there ready and the campaign never hits a wall mid-flight.
+
+On top of that there's a small 1% to cover the credit-line and account-handling side of things (so ~$15,150 for the full month). You send the month in advance, I assign that exact budget to the account, and you'll see every dollar going straight into the campaign.
+
+Once you're good with it, just let me know and I'll get the funds details over so we can get this live.
+
+Talk soon,
+[Your name]</pre>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="lbl">Shorter version<small>if you want it tighter</small></span>
+      <button class="copy" data-t="m2">Copy</button>
+    </div>
+    <pre id="m2">Hey Leo — quick one on the ads. Since the campaign runs on my credit line, there's no card to set up on your side, so we can launch clean. Budget-wise, at ~$500/day we're looking at about $15,000 for the first month. Easiest is for you to fund the month up front so the spend is always ready and we never stall mid-campaign. There's also a small 1% on top for the credit-line/account handling (~$15,150 total), then I assign that exact budget to the account and you see every dollar go into the ads. Happy with that? I'll send funding details and we'll get it live. 👍</pre>
+  </div>
+
+  <p class="tip">The 1% is positioned as a line-of-credit / account-handling cost (true — it is your card carrying the spend), not a "handling charge" or commission. The "always ready / never stall mid-campaign" line is what makes paying a month up front feel like a benefit to <em>him</em>, not a favor to you.</p>
+</div>
+
+<script>
+/* Bulletproof copy: modern clipboard in secure context, execCommand fallback, manual-select last resort */
+(function(){
+  function flash(btn, ok){
+    if(!btn.getAttribute('data-orig')) btn.setAttribute('data-orig', btn.textContent);
+    var orig = btn.getAttribute('data-orig');
+    btn.textContent = ok ? 'Copied ✓' : 'Select + ⌘/Ctrl-C';
+    btn.classList.toggle('done', ok);
+    setTimeout(function(){ btn.textContent = orig; btn.classList.remove('done'); }, 1700);
+  }
+  function legacyCopy(text, srcEl){
+    try{
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly','');
+      ta.style.position='fixed'; ta.style.top='0'; ta.style.left='-9999px';
+      document.body.appendChild(ta);
+      ta.focus(); ta.select();
+      try{ ta.setSelectionRange(0, text.length); }catch(e){}
+      var ok = false;
+      try{ ok = document.execCommand('copy'); }catch(e){ ok = false; }
+      document.body.removeChild(ta);
+      if(!ok && srcEl){ try{ var r=document.createRange(); r.selectNodeContents(srcEl); var s=window.getSelection(); s.removeAllRanges(); s.addRange(r); }catch(e){} }
+      return ok;
+    }catch(e){ return false; }
+  }
+  function doCopy(btn){
+    var src = document.getElementById(btn.getAttribute('data-t'));
+    if(!src){ flash(btn, false); return; }
+    var text = src.innerText;
+    if(navigator.clipboard && navigator.clipboard.writeText && window.isSecureContext){
+      navigator.clipboard.writeText(text).then(function(){ flash(btn, true); },
+        function(){ flash(btn, legacyCopy(text, src)); });
+    } else {
+      flash(btn, legacyCopy(text, src));
+    }
+  }
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest ? e.target.closest('.copy') : null;
+    if(btn){ e.preventDefault(); doCopy(btn); }
+  });
+})();
+</script>
+</body>
+</html>
