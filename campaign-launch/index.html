@@ -1,0 +1,632 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>LendPeak — Google Ads Launch Spec (load-by-hand)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#0FB97D;--green-d:#0a9e6a;--bg:#0c1322;--bg2:#0e1726;--card:#16213a;--line:#26344f;--text:#eaf1fb;--muted:#9fb1cc;--amber:#e8920c;--red:#e0563f;--blue:#3d8bff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.62 'Inter',system-ui,Arial,sans-serif}
+.wrap{max-width:920px;margin:0 auto;padding:26px 20px 70px}
+h1{font-family:'Sora';font-size:25px;margin:0 0 4px}
+h2{font-family:'Sora';font-size:19px;margin:34px 0 8px;padding-top:10px;border-top:1px solid var(--line);scroll-margin-top:14px}
+h3{font-family:'Sora';font-size:15.5px;margin:20px 0 6px;color:#cfe0f5}
+.sub{color:var(--muted);font-size:13.5px;margin:0 0 8px}
+a{color:var(--green)}
+header{background:linear-gradient(135deg,#0A2540,#103a66);border:1px solid var(--line);border-radius:14px;padding:22px 22px;margin-bottom:18px}
+header .pill{display:inline-block;background:rgba(15,185,125,.16);color:var(--green);font-weight:700;font-size:11.5px;padding:3px 10px;border-radius:20px;margin-bottom:8px}
+.toc{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:14px 0 6px;column-count:2;column-gap:26px}
+.toc a{display:block;color:var(--text);text-decoration:none;font-size:13.6px;padding:3px 0}
+.toc a:hover{color:var(--green)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:12px 0}
+.cb{position:relative;margin:8px 0 14px}
+.copy{position:absolute;top:8px;right:8px;background:var(--green);color:#04241a;border:0;font-family:'Sora';font-weight:700;font-size:12px;padding:6px 12px;border-radius:7px;cursor:pointer;transition:.15s}
+.copy:hover{background:#13d28e}.copy.done{background:var(--green-d);color:#fff}
+pre{margin:0;padding:14px 16px;padding-top:14px;background:#0a1120;border:1px solid var(--line);border-radius:10px;white-space:pre-wrap;word-break:break-word;font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;color:#dce7f7}
+table{width:100%;border-collapse:collapse;margin:8px 0 14px;font-size:13.6px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#101a2e;font-family:'Sora';font-size:12.5px;color:#cfe0f5}
+td code{background:#0a1120;padding:1px 5px;border-radius:4px;font-size:12.5px}
+.note{border-left:3px solid var(--amber);background:rgba(232,146,12,.08);padding:10px 14px;border-radius:8px;margin:10px 0;font-size:13.6px}
+.note.g{border-color:var(--green);background:rgba(15,185,125,.08)}
+.note.r{border-color:var(--red);background:rgba(224,86,63,.08)}
+.tag{font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:20px;white-space:nowrap}
+.ok{background:rgba(15,185,125,.16);color:var(--green)}
+.fix{background:rgba(232,146,12,.18);color:var(--amber)}
+ul,ol{margin:6px 0;padding-left:20px}li{margin:4px 0}
+.kvs{font-size:13.6px}
+.small{color:var(--muted);font-size:12.5px}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:26px 0 0;margin-top:26px;border-top:1px solid var(--line)}
+</style></head><body><div class="wrap">
+<header>
+<span class="pill">LOAD-BY-HAND SPEC · READ-ONLY ACCOUNT</span>
+<h1>🚀 LendPeak — Google Ads Launch Spec</h1>
+<p class="sub">Everything needed to build the Search campaign by hand in the GCALIT MCC child account. 1 campaign · 5 ad groups · 5 landing pages · master negative list · full assets. Nothing is pushed to the account automatically — copy each block straight into Google Ads / Ads Editor.</p>
+<p class="sub"><b>Budget</b> $500/day (≈$7,500 / 15 days, Leo-funded) · <b>Product</b> MCA / working capital, B2B only · <b>Geo</b> United States, all 50 states · <b>Phone</b> (888) 744-8119</p>
+</header>
+<div class="toc"><a href="#s-settings">1 · Snapshot &amp; settings</a><a href="#s-structure">2 · Account structure</a><a href="#s-adgroups">3 · Ad groups, keywords &amp; ads</a><a href="#s-neg">4 · Master negative list</a><a href="#s-assets">5 · Extensions &amp; assets</a><a href="#s-bidding">6 · Bidding &amp; budget plan</a><a href="#s-conv">7 · Conversion tracking</a><a href="#s-policy">8 · Proofread &amp; policy fixes</a><a href="#s-checklist">9 · Launch checklist</a></div>
+<h2 id="s-settings">1 · Snapshot &amp; campaign settings</h2>
+<p class="sub">Create one campaign with these exact settings. Defaults Google pre-checks that we deliberately turn OFF are flagged.</p>
+<table><tr><th>Setting</th><th>Value</th><th>Why</th></tr>
+<tr><td><b>Campaign name</b></td><td><code>LP | MCA | Search | US</code></td><td class="small">One naming convention; easy to scale later.</td></tr>
+<tr><td><b>Goal</b></td><td>Leads — <i>without</i> a goal-type guidance lock</td><td class="small">Keeps full control of settings.</td></tr>
+<tr><td><b>Campaign type</b></td><td>Search</td><td class="small">No Display, no Performance Max for launch.</td></tr>
+<tr><td><b>Networks</b></td><td>Google Search only — <b>UNCHECK</b> Search Partners &amp; Display Network</td><td class="small">Partner/Display traffic is low-intent + uncontrolled for a regulated vertical.</td></tr>
+<tr><td><b>Locations</b></td><td>United States (all 50 states + DC)</td><td class="small">National B2B MCA.</td></tr>
+<tr><td><b>Location options</b></td><td><b>Presence:</b> People <i>in</i> your targeted locations (NOT presence-or-interest)</td><td class="small">Stops overseas tire-kickers searching US terms.</td></tr>
+<tr><td><b>Languages</b></td><td>English</td><td class="small">Audience language.</td></tr>
+<tr><td><b>Budget</b></td><td>$500.00 / day</td><td class="small">≈$7,500 over 15 days. Google may spend up to 2× on a given day but caps the month at 30.4× daily.</td></tr>
+<tr><td><b>Bidding</b></td><td><b>Maximize Clicks</b> + max CPC limit <b>$30</b> (see §6)</td><td class="small">New campaign has no conversion history; conversion bidding would starve. Cap blocks $100-click disasters.</td></tr>
+<tr><td><b>Ad rotation</b></td><td>Optimize for best performing ads</td><td class="small">Standard.</td></tr>
+<tr><td><b>Ad schedule</b></td><td>All days, all hours (form is 24/7)</td><td class="small">Phone routed to Five9; monitor and trim dead hours later.</td></tr>
+<tr><td><b>Devices</b></td><td>All (mobile, desktop, tablet)</td><td class="small">Adjust bid modifiers after data.</td></tr>
+<tr><td><b>Final URL expansion</b></td><td>OFF</td><td class="small">Keep traffic on the mapped LP for clean tracking.</td></tr>
+<tr><td><b>Dynamic Search Ads</b></td><td>Not used</td><td class="small">Manual keyword control only.</td></tr>
+<tr><td><b>Auto-applied recommendations</b></td><td>OFF (all)</td><td class="small">Stops Google silently widening match/adding broad.</td></tr>
+<tr><td><b>Brand exclusions / brand bidding</b></td><td>No LendPeak brand bidding</td><td class="small">Affiliate/partner rule — bid only on generic intent.</td></tr>
+</table>
+<h2 id="s-structure">2 · Account structure</h2>
+<p class="sub">One campaign → five tightly-themed ad groups. Each ad group has its <b>own keywords</b>, its <b>own RSA</b>, and points to its <b>own matching landing page</b> — so the search, the ad, and the page all say the same thing (high Quality Score, low CPC).</p>
+<table><tr><th>Ad group</th><th>Intent</th><th>Landing page (Final URL)</th><th># Keywords</th></tr>
+<tr><td><b>Same-Day / Fast Funding</b></td><td class="small">same-day</td><td><code>https://lendpeak.com/lp/same-day</code></td><td>8</td></tr>
+<tr><td><b>Bad Credit / Cash-Flow Approved</b></td><td class="small">bad-credit</td><td><code>https://lendpeak.com/lp/bad-credit</code></td><td>12</td></tr>
+<tr><td><b>Big Ticket ($25K–$2M+)</b></td><td class="small">big-ticket</td><td><code>https://lendpeak.com/lp/big-ticket</code></td><td>14</td></tr>
+<tr><td><b>Merchant Cash Advance (product)</b></td><td class="small">mca</td><td><code>https://lendpeak.com/lp/mca</code></td><td>15</td></tr>
+<tr><td><b>Apply / Pre-Qualify (high intent)</b></td><td class="small">apply</td><td><code>https://lendpeak.com/lp/apply</code></td><td>12</td></tr>
+</table>
+<div class="note">Keywords were <b>de-duplicated across ad groups</b> (e.g. <code>merchant cash advance</code> lives only in the MCA group, not also in Same-Day) so your own ad groups never bid against each other.</div>
+<h2 id="s-adgroups">3 · Ad groups — keywords &amp; responsive search ads</h2>
+<p class="sub">For each group: paste the <b>keyword block</b> into the ad group's keyword box (it contains every term twice — once <code>"phrase"</code> and once <code>[exact]</code> — for control + coverage). Then build <b>one RSA</b>: paste the 15 headlines + 4 descriptions, set the Final URL, and <b>pin the first headline to position 1</b>.</p>
+<div class="card"><h3>▸ Same-Day / Fast Funding &nbsp;<span class="small">→ https://lendpeak.com/lp/same-day</span></h3>
+<p class="small"><b>Keywords</b> (phrase + exact):</p>
+<div class="cb"><button class="copy" data-t="kw_same-day">Copy</button><pre id="kw_same-day">&quot;same day business funding&quot;
+&quot;fast business funding&quot;
+&quot;business funding today&quot;
+&quot;small business funding&quot;
+&quot;working capital loans&quot;
+&quot;quick business funding&quot;
+&quot;same day business loans&quot;
+&quot;unsecured business funding&quot;
+[same day business funding]
+[fast business funding]
+[business funding today]
+[small business funding]
+[working capital loans]
+[quick business funding]
+[same day business loans]
+[unsecured business funding]</pre></div>
+<p class="small"><b>RSA headlines</b> (15 · all ≤30 chars) — pin <code>Same-Day Business Funding</code> to <b>Position 1</b>:</p>
+<div class="cb"><button class="copy" data-t="h_same-day">Copy</button><pre id="h_same-day">Same-Day Business Funding
+Fast Business Capital
+Funding in As Little As a Day
+Need Working Capital Fast?
+Get Business Funds Quickly
+Apply for Business Funding
+Fast Capital for Small Biz
+Funding Without Long Waits
+Working Capital Made Simple
+Quick Business Funding Options
+Apply in Minutes Online
+Need Capital for Growth?
+Pre-Qualify Today
+Check Eligibility Now
+See Your Funding Options</pre></div>
+<p class="small"><b>RSA descriptions</b> (4 · all ≤90 chars):</p>
+<div class="cb"><button class="copy" data-t="d_same-day">Copy</button><pre id="d_same-day">Apply online in minutes and explore fast business funding options.
+Access working capital to support inventory, payroll, and growth.
+Fast business funding with a simple online application process.
+Need capital quickly? Explore funding options for your business.</pre></div>
+<p class="small"><b>Final URL:</b> <code>https://lendpeak.com/lp/same-day</code> &nbsp;·&nbsp; append tracking template / GCLID auto-tagging at account level.</p>
+</div>
+<div class="card"><h3>▸ Bad Credit / Cash-Flow Approved &nbsp;<span class="small">→ https://lendpeak.com/lp/bad-credit</span></h3>
+<p class="small"><b>Keywords</b> (phrase + exact):</p>
+<div class="cb"><button class="copy" data-t="kw_bad-credit">Copy</button><pre id="kw_bad-credit">&quot;bad credit business loans&quot;
+&quot;bad credit business funding&quot;
+&quot;business loans for bad credit&quot;
+&quot;small business loans bad credit&quot;
+&quot;bad credit working capital&quot;
+&quot;poor credit business funding&quot;
+&quot;business cash advance bad credit&quot;
+&quot;merchant cash advance bad credit&quot;
+&quot;low credit score business loans&quot;
+&quot;business financing for bad credit&quot;
+&quot;unsecured business loans bad credit&quot;
+&quot;same day business funding bad credit&quot;
+[bad credit business loans]
+[bad credit business funding]
+[business loans for bad credit]
+[small business loans bad credit]
+[bad credit working capital]
+[poor credit business funding]
+[business cash advance bad credit]
+[merchant cash advance bad credit]
+[low credit score business loans]
+[business financing for bad credit]
+[unsecured business loans bad credit]
+[same day business funding bad credit]</pre></div>
+<p class="small"><b>RSA headlines</b> (15 · all ≤30 chars) — pin <code>Funding Based on Cash Flow</code> to <b>Position 1</b>:</p>
+<div class="cb"><button class="copy" data-t="h_bad-credit">Copy</button><pre id="h_bad-credit">Funding Based on Cash Flow
+Funding Beyond Credit Score
+Business Funding Bad Credit
+Bad Credit? Get Funding
+Fast Funding for Bad Credit
+Business Loans for Bad Credit
+Low Credit? Explore Funding
+Funding for Credit Challenges
+Working Capital for Business
+Quick Business Funding
+Flexible Business Funding
+Need Capital for Business?
+Business Funding Made Easy
+Fast Business Capital
+Apply for Business Funding</pre></div>
+<p class="small"><b>RSA descriptions</b> (4 · all ≤90 chars):</p>
+<div class="cb"><button class="copy" data-t="d_bad-credit">Copy</button><pre id="d_bad-credit">Explore working capital solutions with a simple online application.
+Get access to funding options without lengthy bank procedures.
+Discover fast and flexible funding options for eligible businesses.
+Working capital solutions designed for growing businesses.</pre></div>
+<p class="small"><b>Final URL:</b> <code>https://lendpeak.com/lp/bad-credit</code> &nbsp;·&nbsp; append tracking template / GCLID auto-tagging at account level.</p>
+</div>
+<div class="card"><h3>▸ Big Ticket ($25K–$2M+) &nbsp;<span class="small">→ https://lendpeak.com/lp/big-ticket</span></h3>
+<p class="small"><b>Keywords</b> (phrase + exact):</p>
+<div class="cb"><button class="copy" data-t="kw_big-ticket">Copy</button><pre id="kw_big-ticket">&quot;large business loans&quot;
+&quot;big business loans&quot;
+&quot;high amount business loans&quot;
+&quot;large business funding&quot;
+&quot;big ticket business funding&quot;
+&quot;business loans over 500k&quot;
+&quot;business loans over 1 million&quot;
+&quot;business funding up to 2 million&quot;
+&quot;high limit business funding&quot;
+&quot;business capital for expansion&quot;
+&quot;business growth funding&quot;
+&quot;large working capital loans&quot;
+&quot;business acquisition financing&quot;
+&quot;commercial business funding&quot;
+[large business loans]
+[big business loans]
+[high amount business loans]
+[large business funding]
+[big ticket business funding]
+[business loans over 500k]
+[business loans over 1 million]
+[business funding up to 2 million]
+[high limit business funding]
+[business capital for expansion]
+[business growth funding]
+[large working capital loans]
+[business acquisition financing]
+[commercial business funding]</pre></div>
+<p class="small"><b>RSA headlines</b> (15 · all ≤30 chars) — pin <code>Funding From $25K to $2M+</code> to <b>Position 1</b>:</p>
+<div class="cb"><button class="copy" data-t="h_big-ticket">Copy</button><pre id="h_big-ticket">Large Business Funding
+Funding From $25K to $2M+
+Need Large Business Capital?
+High Limit Business Funding
+Big Ticket Business Loans
+Funding for Business Growth
+Fast Large Business Loans
+Large Working Capital
+Capital for Expansion
+Business Funding Up to $2M
+Fast Funding for Growth
+Scale With Business Funding
+Flexible Business Capital
+Business Funding Solutions
+Need Funding Over $500K?</pre></div>
+<p class="small"><b>RSA descriptions</b> (4 · all ≤90 chars):</p>
+<div class="cb"><button class="copy" data-t="d_big-ticket">Copy</button><pre id="d_big-ticket">Access business funding from $25K to $2M+ with a simple application.
+Explore large funding solutions tailored to your business cash flow.
+Get capital for expansion, acquisitions, and growth opportunities.
+Apply online and discover business funding options up to $2M+.</pre></div>
+<p class="small"><b>Final URL:</b> <code>https://lendpeak.com/lp/big-ticket</code> &nbsp;·&nbsp; append tracking template / GCLID auto-tagging at account level.</p>
+</div>
+<div class="card"><h3>▸ Merchant Cash Advance (product) &nbsp;<span class="small">→ https://lendpeak.com/lp/mca</span></h3>
+<p class="small"><b>Keywords</b> (phrase + exact):</p>
+<div class="cb"><button class="copy" data-t="kw_mca">Copy</button><pre id="kw_mca">&quot;online mca application&quot;
+&quot;merchant cash advance&quot;
+&quot;mca funding&quot;
+&quot;merchant cash advance loan&quot;
+&quot;business cash advance&quot;
+&quot;working capital mca&quot;
+&quot;fast merchant cash advance&quot;
+&quot;same day mca funding&quot;
+&quot;small business cash advance&quot;
+&quot;revenue based financing&quot;
+&quot;merchant funding&quot;
+&quot;mca loans&quot;
+&quot;business working capital&quot;
+&quot;mca for small business&quot;
+&quot;quick business cash advance&quot;
+[online mca application]
+[merchant cash advance]
+[mca funding]
+[merchant cash advance loan]
+[business cash advance]
+[working capital mca]
+[fast merchant cash advance]
+[same day mca funding]
+[small business cash advance]
+[revenue based financing]
+[merchant funding]
+[mca loans]
+[business working capital]
+[mca for small business]
+[quick business cash advance]</pre></div>
+<p class="small"><b>RSA headlines</b> (15 · all ≤30 chars) — pin <code>Merchant Cash Advance</code> to <b>Position 1</b>:</p>
+<div class="cb"><button class="copy" data-t="h_mca">Copy</button><pre id="h_mca">Merchant Cash Advance
+Fast MCA Funding
+Get Business Cash Advance
+Flexible MCA Funding
+Same Day MCA Funding
+Working Capital Made Easy
+Fast Business Cash Advance
+Need Working Capital Fast?
+Revenue Based Funding
+MCA Funding for Business
+Quick Business Funding
+Fast Working Capital
+Apply for MCA Funding
+Business Funding Without Wait
+Flexible Business Capital</pre></div>
+<p class="small"><b>RSA descriptions</b> (4 · all ≤90 chars):</p>
+<div class="cb"><button class="copy" data-t="d_mca">Copy</button><pre id="d_mca">Apply in minutes and explore flexible MCA funding solutions.
+Need capital fast? Discover business cash advance options today.
+Revenue-based repayments designed around your business performance.
+Explore working capital options without lengthy bank procedures.</pre></div>
+<p class="small"><b>Final URL:</b> <code>https://lendpeak.com/lp/mca</code> &nbsp;·&nbsp; append tracking template / GCLID auto-tagging at account level.</p>
+</div>
+<div class="card"><h3>▸ Apply / Pre-Qualify (high intent) &nbsp;<span class="small">→ https://lendpeak.com/lp/apply</span></h3>
+<p class="small"><b>Keywords</b> (phrase + exact):</p>
+<div class="cb"><button class="copy" data-t="kw_apply">Copy</button><pre id="kw_apply">&quot;apply for business funding&quot;
+&quot;business funding application&quot;
+&quot;apply for business loan&quot;
+&quot;online business funding application&quot;
+&quot;business financing application&quot;
+&quot;apply for working capital&quot;
+&quot;business loan application online&quot;
+&quot;pre qualify business funding&quot;
+&quot;business funding pre approval&quot;
+&quot;apply for merchant cash advance&quot;
+&quot;apply for mca funding&quot;
+&quot;small business funding application&quot;
+[apply for business funding]
+[business funding application]
+[apply for business loan]
+[online business funding application]
+[business financing application]
+[apply for working capital]
+[business loan application online]
+[pre qualify business funding]
+[business funding pre approval]
+[apply for merchant cash advance]
+[apply for mca funding]
+[small business funding application]</pre></div>
+<p class="small"><b>RSA headlines</b> (15 · all ≤30 chars) — pin <code>Apply for Business Funding</code> to <b>Position 1</b>:</p>
+<div class="cb"><button class="copy" data-t="h_apply">Copy</button><pre id="h_apply">Apply for Business Funding
+Apply in 60 Seconds
+Fast Business Funding
+Get Funding for Your Business
+Pre-Qualify for Funding
+Business Funding Made Easy
+Quick Business Funding
+Apply Online for Funding
+Need Business Capital Fast?
+Get Started in Minutes
+Fast Funding Starts Here
+Business Funding Simplified
+Funding Without the Wait
+Apply for Working Capital
+Explore Funding Options</pre></div>
+<p class="small"><b>RSA descriptions</b> (4 · all ≤90 chars):</p>
+<div class="cb"><button class="copy" data-t="d_apply">Copy</button><pre id="d_apply">Discover funding options designed around your business cash flow.
+Start your business funding application in just a few minutes.
+Explore flexible funding solutions for growing businesses today.
+Apply online and move your business plans forward with confidence.</pre></div>
+<p class="small"><b>Final URL:</b> <code>https://lendpeak.com/lp/apply</code> &nbsp;·&nbsp; append tracking template / GCLID auto-tagging at account level.</p>
+</div>
+<h2 id="s-neg">4 · Master negative keyword list</h2>
+<p class="sub">Create ONE shared negative-keyword list — name it <code>LendPeak — MCA Master Negatives</code> — paste the block below, and apply it to the campaign. <b>246 negatives.</b> Single words are <b>broad</b> negatives (block any query containing them); multi-word terms in <code>"quotes"</code> are <b>phrase</b> negatives.</p>
+<div class="note">Carefully checked so <b>no negative blocks our own keywords</b> — e.g. we do <u>not</u> broad-negate <code>credit</code>, <code>loan</code>, <code>capital</code>, <code>revenue</code> or <code>commercial</code> (all live in our keyword set). We block the <i>junk around</i> them via phrases instead.</div>
+<p class="small">What this kills: free/grants/government aid · jobs &amp; salaries · how-to/info/definitions/calculators · reviews/scam/lawsuit/complaints · consumer &amp; personal finance (personal/auto/home/student loans, credit cards, payday) · credit-repair/credit-score tools · pre-revenue startups &amp; business-plan searches · real-estate &amp; factoring (not our product) · guaranteed/instant/no-credit-check junk · MCA-lawsuit / debt-relief / "get out of MCA" defensive searches · non-US geos · login/customer-service/existing-customer terms.</p>
+<div class="cb"><button class="copy" data-t="neg_master">Copy</button><pre id="neg_master">free
+grant
+grants
+job
+jobs
+salary
+hiring
+career
+careers
+employment
+resume
+internship
+scam
+scams
+fraud
+lawsuit
+complaints
+complaint
+bbb
+ripoff
+reviews
+review
+payday
+mortgage
+mortgages
+student
+crypto
+bitcoin
+forex
+stocks
+stock
+gambling
+casino
+cannabis
+marijuana
+adult
+charity
+nonprofit
+ngo
+stimulus
+ppp
+eidl
+sba
+government
+calculator
+calculators
+definition
+meaning
+wiki
+wikipedia
+investopedia
+reddit
+quora
+pdf
+ebook
+template
+templates
+course
+courses
+class
+certification
+training
+tutorial
+bankruptcy
+insurance
+bookkeeping
+login
+crowdfunding
+gofundme
+kickstarter
+jobsite
+salaries
+udemy
+coursera
+glassdoor
+indeed
+linkedin
+internships
+uk
+india
+canada
+australia
+nigeria
+philippines
+pakistan
+kenya
+ghana
+dubai
+singapore
+&quot;personal loan&quot;
+&quot;personal loans&quot;
+&quot;car loan&quot;
+&quot;auto loan&quot;
+&quot;auto loans&quot;
+&quot;home loan&quot;
+&quot;home loans&quot;
+&quot;house loan&quot;
+&quot;mortgage loan&quot;
+&quot;student loan&quot;
+&quot;student loans&quot;
+&quot;payday loan&quot;
+&quot;payday loans&quot;
+&quot;credit card&quot;
+&quot;credit cards&quot;
+&quot;debt consolidation&quot;
+&quot;debt consolidation loan&quot;
+&quot;debt relief&quot;
+&quot;debt settlement&quot;
+&quot;title loan&quot;
+&quot;pawn shop&quot;
+&quot;consumer loan&quot;
+&quot;installment loan&quot;
+&quot;cash loan app&quot;
+&quot;loan app&quot;
+&quot;credit repair&quot;
+&quot;fix my credit&quot;
+&quot;fix bad credit&quot;
+&quot;free credit score&quot;
+&quot;check my credit&quot;
+&quot;credit karma&quot;
+&quot;improve credit score&quot;
+&quot;build credit&quot;
+&quot;credit score calculator&quot;
+&quot;raise credit score&quot;
+&quot;how to&quot;
+&quot;how do i&quot;
+&quot;what is&quot;
+&quot;what are&quot;
+&quot;why is&quot;
+&quot;types of&quot;
+&quot;pros and cons&quot;
+&quot;list of&quot;
+&quot;difference between&quot;
+&quot;is it legit&quot;
+&quot;is it safe&quot;
+&quot;how does it work&quot;
+&quot;how to get&quot;
+&quot;how to start&quot;
+&quot;no credit check&quot;
+&quot;guaranteed approval&quot;
+&quot;guaranteed loan&quot;
+&quot;guaranteed funding&quot;
+&quot;instant approval&quot;
+&quot;100 percent approval&quot;
+&quot;100% approval&quot;
+&quot;easy approval no&quot;
+&quot;no credit check loans&quot;
+&quot;start a business&quot;
+&quot;starting a business&quot;
+&quot;startup business loan&quot;
+&quot;startup business loans&quot;
+&quot;startup funding&quot;
+&quot;loans for startups&quot;
+&quot;funding for startups&quot;
+&quot;business plan&quot;
+&quot;business plan template&quot;
+&quot;business idea&quot;
+&quot;business ideas&quot;
+&quot;new business ideas&quot;
+&quot;how to open&quot;
+&quot;real estate loan&quot;
+&quot;commercial real estate&quot;
+&quot;real estate investing&quot;
+&quot;rental property loan&quot;
+&quot;invoice factoring&quot;
+&quot;purchase order financing&quot;
+&quot;equipment leasing companies&quot;
+&quot;free money&quot;
+&quot;free government money&quot;
+&quot;free business grant&quot;
+&quot;free business grants&quot;
+&quot;free funding&quot;
+&quot;small business grant&quot;
+&quot;small business grants&quot;
+&quot;minority business grant&quot;
+&quot;women business grant&quot;
+&quot;sba loan&quot;
+&quot;sba loans&quot;
+&quot;ppp loan&quot;
+&quot;ppp loans&quot;
+&quot;disaster loan&quot;
+&quot;eidl loan&quot;
+&quot;government loan&quot;
+&quot;government grants&quot;
+&quot;interest rate&quot;
+&quot;interest rates&quot;
+&quot;lowest interest rate&quot;
+&quot;0 interest&quot;
+&quot;zero interest&quot;
+&quot;interest free&quot;
+&quot;no interest loan&quot;
+&quot;best rates&quot;
+&quot;cheapest loan&quot;
+&quot;work from home&quot;
+&quot;make money online&quot;
+&quot;make money fast&quot;
+&quot;get rich&quot;
+&quot;passive income&quot;
+&quot;customer service&quot;
+&quot;phone number&quot;
+&quot;contact number&quot;
+&quot;sign in&quot;
+&quot;log in&quot;
+&quot;app download&quot;
+&quot;payoff login&quot;
+&quot;payment portal&quot;
+&quot;my account login&quot;
+&quot;account login&quot;
+&quot;definition of&quot;
+&quot;meaning of&quot;
+&quot;examples of&quot;
+&quot;sample letter&quot;
+&quot;loan agreement template&quot;
+&quot;jobs near me&quot;
+&quot;salary of&quot;
+&quot;how much does&quot;
+&quot;what does it mean&quot;
+&quot;in india&quot;
+&quot;in uk&quot;
+&quot;in canada&quot;
+&quot;in australia&quot;
+&quot;in the uk&quot;
+&quot;in nigeria&quot;
+&quot;in pakistan&quot;
+&quot;for students&quot;
+&quot;for individuals&quot;
+&quot;for personal use&quot;
+&quot;for buying a car&quot;
+&quot;for medical bills&quot;
+&quot;weed business&quot;
+&quot;dispensary loan&quot;
+&quot;cbd business loan&quot;
+&quot;crypto loan&quot;
+&quot;forex funding&quot;
+&quot;wholesale funding scam&quot;
+&quot;is lendpeak legit&quot;
+&quot;lendpeak reviews&quot;
+&quot;lendpeak complaints&quot;
+&quot;merchant cash advance lawsuit&quot;
+&quot;mca lawsuit&quot;
+&quot;mca debt relief&quot;
+&quot;mca debt settlement&quot;
+&quot;default on mca&quot;
+&quot;get out of mca&quot;
+&quot;mca attorney&quot;
+&quot;mca lawyer&quot;</pre></div>
+<h2 id="s-assets">5 · Extensions &amp; assets</h2>
+<p class="sub">Add all of these at <b>campaign level</b> so every ad group inherits them.</p>
+<h3>Sitelinks (6)</h3>
+<table><tr><th>Text</th><th>Final URL</th><th>Description line 1</th><th>Description line 2</th></tr>
+<tr><td><b>Same-Day Funding</b></td><td><code>https://lendpeak.com/lp/same-day</code></td><td>Funding in as little as 24 hrs</td><td>Simple online application</td></tr>
+<tr><td><b>Apply Online</b></td><td><code>https://lendpeak.com/lp/apply</code></td><td>Pre-qualify in minutes</td><td>No obligation to apply</td></tr>
+<tr><td><b>Funding by Revenue</b></td><td><code>https://lendpeak.com/lp/bad-credit</code></td><td>Approved on cash flow</td><td>Credit challenges considered</td></tr>
+<tr><td><b>Merchant Cash Advance</b></td><td><code>https://lendpeak.com/lp/mca</code></td><td>Revenue-based repayment</td><td>Fast MCA funding</td></tr>
+<tr><td><b>Large Funding $25K–$2M+</b></td><td><code>https://lendpeak.com/lp/big-ticket</code></td><td>For expansion &amp; acquisitions</td><td>High-limit options</td></tr>
+<tr><td><b>How It Works</b></td><td><code>https://lendpeak.com/</code></td><td>See the 3 simple steps</td><td>Check basic requirements</td></tr>
+</table>
+<h3>Callout assets (10)</h3>
+<div class="cb"><button class="copy" data-t="callouts">Copy</button><pre id="callouts">Funding in as little as 24 hrs
+Approved on revenue, not credit
+No collateral required
+$25K to $2M+ available
+Simple online application
+Dedicated funding specialist
+Revenue-based repayment
+All industries considered
+No obligation to apply
+Fast pre-qualification</pre></div>
+<h3>Structured snippets</h3>
+<p class="small">Header: <b>Services</b> —</p>
+<div class="cb"><button class="copy" data-t="snippets">Copy</button><pre id="snippets">Merchant Cash Advance
+Working Capital
+Revenue-Based Financing
+Same-Day Funding
+Large Funding</pre></div>
+<h3>Call asset</h3>
+<ul class="kvs"><li>Phone: <code>(888) 744-8119</code> (routes to Five9). Turn on <b>call reporting</b>.</li><li>Consider a call schedule for staffed hours; otherwise calls outside hours hit voicemail.</li></ul>
+<h3>Image assets</h3>
+<ul class="kvs"><li>Upload 3–5 images: ratios <b>1.91:1</b>, <b>1:1</b>, and <b>4:5</b>. Subjects: small-business owners (retail/restaurant/contractor), a storefront, a handshake/approval moment. No text overlay, no logos-in-image, no misleading "cash pile" imagery.</li></ul>
+<h3>Business name &amp; logo</h3>
+<ul class="kvs"><li>Business name: <code>LendPeak</code> · upload square + landscape logo.</li></ul>
+<div class="note">Leave OFF for launch: <b>Location asset</b> (national B2B lead-gen — a Glendale pin implies walk-in service and can mislead), <b>Promotion</b> (no promo), <b>Price</b>, and <b>Lead-form asset</b> (keep traffic on the LP so the Lead conversion + GCLID fire correctly).</div>
+<h2 id="s-bidding">6 · Bidding &amp; budget plan</h2>
+<table><tr><th>Phase</th><th>Bidding</th><th>Trigger to move on</th></tr><tr><td><b>Days 1–15 (launch / Leo's funded window)</b></td><td>Maximize Clicks + <b>$30 max-CPC</b> cap</td><td>Gather click + Lead-conversion data without Google starving or overspending. MCA CPCs commonly run $15–$45; the cap blocks runaway auctions.</td></tr><tr><td><b>Once ~15–30 Lead conversions land</b></td><td>Switch to <b>Maximize Conversions</b></td><td>Enough signal for Smart Bidding to optimize to the form-fill.</td></tr><tr><td><b>Once funded-deal (Converted Lead) data builds</b></td><td><b>Target CPA</b> on Converted Lead</td><td>Bid to the action that actually makes money — funded deals — not just leads.</td></tr></table>
+<div class="note">$500/day across one campaign. Start <b>Exact + Phrase only</b> (no Broad) — exact for control, phrase for reach. Watch the Search Terms report daily for the first week and feed anything junky into the master negative list.</div>
+<h2 id="s-conv">7 · Conversion tracking (must be live before enabling)</h2>
+<ul class="kvs"><li><span class="tag ok">PRIMARY</span> &nbsp;<b>Lead</b> — form submit on the LP. Bid to this at launch. <b>Enhanced Conversions ON</b> (hashed email/phone + GCLID).</li><li><span class="tag fix">SECONDARY</span> &nbsp;<b>Converted Lead</b> — funded deal, imported offline from GoHighLevel via the captured GCLID. This is the true-ROI action.</li><li>Install Google Ads tag + GA4 on all <code>/lp/*</code> pages; confirm the form posts to GoHighLevel AND fires the Lead conversion AND passes the GCLID.</li><li>Verify with Tag Assistant + run the 5 test leads (one per LP, fake 555-01xx phone) before any spend.</li></ul>
+<h2 id="s-policy">8 · Proofread &amp; policy fixes</h2>
+<table><tr><th>Item</th><th>Status</th><th>Action</th></tr><tr><td>Headline length (all 75)</td><td><span class="tag fix">1 fix</span></td><td><code>Fast Capital for Small Business</code> = 31 chars (limit 30) → already trimmed to <code>Fast Capital for Small Biz</code> in the Same-Day block above.</td></tr><tr><td>Descriptions (all 20)</td><td><span class="tag ok">OK</span></td><td>All ≤90 chars.</td></tr><tr><td>Bad-Credit ad group</td><td><span class="tag fix">highest risk</span></td><td>Most likely to draw a financial-services disapproval. Pinned <code>Funding Based on Cash Flow</code> to H1; LP must lead with "approved on your revenue, not your credit". Keep "Business Loans for Bad Credit" unpinned, not in H1.</td></tr><tr><td>Speed claims</td><td><span class="tag ok">OK</span></td><td>"In as little as a day" is qualified language — keep it. Never write "guaranteed" or "instant approval".</td></tr><tr><td>Financial-products verification</td><td><span class="tag fix">gate</span></td><td>Submit Google financial-services verification for LendPeak Inc (+ LOA authorizing GCALIT) BEFORE enabling — lending is verified per advertiser/account.</td></tr></table>
+<h2 id="s-checklist">9 · Launch checklist (in order)</h2>
+<ol class="kvs"><li>Financial-products verification submitted (LendPeak Inc + LOA).</li><li>Create campaign with the §1 settings (Search only, partners/Display OFF, presence-only, $500/day).</li><li>Create the 5 ad groups; paste each keyword block (§3).</li><li>Create + apply the master negative list (§4).</li><li>Build 1 RSA per ad group; paste headlines + descriptions; set Final URL; pin H1 (§3).</li><li>Add all extensions/assets at campaign level (§5).</li><li>Confirm Lead conversion fires (Tag Assistant) + run 5 test leads + verify GCLID in GoHighLevel; delete test leads (§7).</li><li>Set bidding: Maximize Clicks + $30 CPC cap (§6).</li><li>Final policy pass: bad-credit H1 pinned, no guarantees, LP address present (§8).</li><li><b>Enable.</b> Watch Search Terms daily for week 1; feed junk into the negative list.</li></ol>
+<div class="note g">Account access is <b>read-only</b> — this page is the complete build spec. Load it by hand (or in Google Ads Editor) against the CID once supplied. Nothing here is pushed automatically.</div>
+<footer>LendPeak / GCALIT · Google Ads launch spec · build-by-hand · 5 LPs · 246 negatives · read-only account</footer>
+</div>
+<script>
+(function(){
+function flash(b,ok){if(!b.dataset.o)b.dataset.o=b.textContent;b.textContent=ok?'Copied ✓':'Press Ctrl/⌘-C';b.classList.toggle('done',ok);setTimeout(function(){b.textContent=b.dataset.o;b.classList.remove('done')},1600);}
+function legacy(t,el){try{var ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.focus();ta.select();try{ta.setSelectionRange(0,t.length)}catch(e){}var ok=false;try{ok=document.execCommand('copy')}catch(e){ok=false}document.body.removeChild(ta);if(!ok&&el){try{var r=document.createRange();r.selectNodeContents(el);var s=window.getSelection();s.removeAllRanges();s.addRange(r)}catch(e){}}return ok;}catch(e){return false}}
+function go(b){var el=document.getElementById(b.dataset.t);if(!el){flash(b,false);return}var t=el.innerText;if(navigator.clipboard&&navigator.clipboard.writeText&&window.isSecureContext){navigator.clipboard.writeText(t).then(function(){flash(b,true)}).catch(function(){flash(b,legacy(t,el))})}else{flash(b,legacy(t,el))}}
+document.addEventListener('click',function(e){var b=e.target.closest('.copy');if(b)go(b)});
+})();
+</script></body></html>
