@@ -1,0 +1,68 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>LendPeak — Self-Serve Conversion Uploads (our side)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#0FB97D;--green-d:#0a9e6a;--bg:#0c1322;--bg2:#0e1726;--card:#16213a;--line:#26344f;--text:#eaf1fb;--muted:#9fb1cc;--amber:#e8920c;--blue:#3d8bff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.62 'Inter',system-ui,Arial,sans-serif}
+.wrap{max-width:780px;margin:0 auto;padding:24px 18px 70px}
+h1{font-family:'Sora';font-size:23px;margin:0 0 4px}
+h2{font-family:'Sora';font-size:18px;margin:30px 0 8px;padding-top:12px;border-top:1px solid var(--line)}
+.sub{color:var(--muted);font-size:13.5px;margin:0 0 8px}
+header{background:linear-gradient(135deg,#0A2540,#103a66);border:1px solid var(--line);border-radius:14px;padding:20px}
+.pill{display:inline-block;background:rgba(61,139,255,.18);color:#9cc2ff;font-weight:700;font-size:11.5px;padding:3px 10px;border-radius:20px;margin-bottom:8px}
+.cb{position:relative;margin:10px 0 14px}
+.copy{position:absolute;top:8px;right:8px;background:var(--green);color:#04241a;border:0;font-family:'Sora';font-weight:700;font-size:12px;padding:6px 12px;border-radius:7px;cursor:pointer}
+.copy:hover{background:#13d28e}.copy.done{background:var(--green-d);color:#fff}
+pre{margin:0;padding:14px 16px;background:#0a1120;border:1px solid var(--line);border-radius:10px;white-space:pre-wrap;word-break:break-word;font:12.5px/1.6 ui-monospace,Menlo,monospace;color:#dce7f7}
+.note{border-left:3px solid var(--amber);background:rgba(232,146,12,.08);padding:11px 14px;border-radius:8px;margin:11px 0;font-size:13.6px}
+.note.g{border-left-color:var(--green);background:rgba(15,185,125,.08)}
+code{background:#0a1120;padding:1px 6px;border-radius:4px;font-size:12.5px}
+ol,ul{margin:6px 0;padding-left:20px}li{margin:6px 0}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:24px 0 0;margin-top:24px;border-top:1px solid var(--line)}
+</style></head><body><div class="wrap">
+
+<header>
+<span class="pill">INTERNAL · OUR SIDE ONLY</span>
+<h1>⬆️ LendPeak — Self-Serve Conversion Uploads</h1>
+<p class="sub">How we report funded deals to Google <b>ourselves</b>, on our schedule, without waiting on the GHL team. Match key = <b>email</b> (Enhanced Conversions for Leads), so all we ever need from a lead is the email + amount + date.</p>
+</header>
+
+<div class="note g"><b>One-time prerequisite:</b> in Google Ads turn on <b>Enhanced conversions for leads</b> (Goals → Settings → Customer data terms), and the website "Lead" tag must send email/phone (the web team's job). After that, every upload below is self-serve.</div>
+
+<h2>The loop (do weekly, or whenever deals fund)</h2>
+<div class="box"><b>Step 1 — Pull funded deals from GoHighLevel.</b>
+<ul>
+<li>In GHL, make a <b>Smart List</b> filtered to your <b>Funded</b> stage/status.</li>
+<li><b>Export to CSV.</b> You need three things per deal: <b>email</b>, <b>funded date/time</b>, <b>funded amount</b>.</li>
+</ul></div>
+<div class="box"><b>Step 2 — Drop them into the upload sheet.</b> Columns must be exactly this. "Conversion Name" must match the Google Ads conversion action <b>character-for-character</b> (<code>Funded Deal</code>).
+<div class="cb" style="margin-top:8px"><button class="copy" data-t="sheet">Copy</button><pre id="sheet">Email          | Conversion Name | Conversion Time              | Conversion Value | Conversion Currency
+jane@shop.com  | Funded Deal     | 2026-06-26 15:30:00          | 25000            | USD
+mike@cafe.com  | Funded Deal     | 2026-06-27 10:05:00          | 40000            | USD</pre></div>
+<span class="sub">Set the sheet's timezone parameter to <code>America/New_York</code> (matches the account). For a qualified-but-not-funded signal, use <b>Conversion Name = Qualified Lead</b> instead — same sheet.</span></div>
+<div class="box"><b>Step 3 — Upload to Google Ads.</b>
+<ul>
+<li><b>Goals → Conversions → Uploads → +</b></li>
+<li>Source: <b>Google Sheets</b> (the connected sheet, auto-imports daily) <i>or</i> <b>Upload a file</b> for a one-off.</li>
+<li>It matches each row to a click by the hashed <b>email</b> → records a <b>Funded Deal</b> with its value.</li>
+</ul></div>
+
+<h2>Level-up (optional): pull it automatically</h2>
+<p class="sub">Once Leo gives a <b>read-only GoHighLevel API key</b> (or sub-account access), we skip the manual export — a small script pulls Funded opportunities (email + amount + date) and writes the upload sheet for us. Say the word and I'll build that script; until then the manual export above is enough and keeps us fully independent of their team.</p>
+
+<div class="note"><b>Why this beats the GHL-automation route:</b> nothing to build on their side, nothing to break in a workflow we don't control, and we can upload the moment a deal funds. The only thing we rely on Leo's team for is the one-time website tag.</div>
+
+<footer>LendPeak / GCALIT x LendPeak (720-674-6191) · internal upload runbook · email-matched · 2026-06-26</footer>
+</div>
+<script>
+(function(){
+function flash(b,ok){if(!b.dataset.o)b.dataset.o=b.textContent;b.textContent=ok?'Copied ✓':'Press Ctrl/⌘-C';b.classList.toggle('done',ok);setTimeout(function(){b.textContent=b.dataset.o;b.classList.remove('done')},1600);}
+function legacy(t,el){try{var ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.focus();ta.select();try{ta.setSelectionRange(0,t.length)}catch(e){}var ok=false;try{ok=document.execCommand('copy')}catch(e){ok=false}document.body.removeChild(ta);if(!ok&&el){try{var r=document.createRange();r.selectNodeContents(el);var s=window.getSelection();s.removeAllRanges();s.addRange(r)}catch(e){}}return ok;}catch(e){return false}}
+function go(b){var el=document.getElementById(b.dataset.t);if(!el){flash(b,false);return}var t=el.innerText;if(navigator.clipboard&&navigator.clipboard.writeText&&window.isSecureContext){navigator.clipboard.writeText(t).then(function(){flash(b,true)}).catch(function(){flash(b,legacy(t,el))})}else{flash(b,legacy(t,el))}}
+document.addEventListener('click',function(e){var b=e.target.closest('.copy');if(b)go(b)});
+})();
+</script></body></html>
