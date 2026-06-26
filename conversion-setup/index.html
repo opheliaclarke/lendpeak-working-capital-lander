@@ -1,0 +1,188 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>LendPeak — Create Conversion Actions (step-by-step)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#0FB97D;--green-d:#0a9e6a;--bg:#0c1322;--bg2:#0e1726;--card:#16213a;--line:#26344f;--text:#eaf1fb;--muted:#9fb1cc;--amber:#e8920c;--red:#e0563f;--blue:#1a73e8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.62 'Inter',system-ui,Arial,sans-serif}
+.wrap{max-width:860px;margin:0 auto;padding:24px 18px 70px}
+h1{font-family:'Sora';font-size:23px;margin:0 0 4px}
+h2{font-family:'Sora';font-size:18px;margin:32px 0 8px;padding-top:12px;border-top:1px solid var(--line)}
+h3{font-family:'Sora';font-size:14.5px;margin:18px 0 6px;color:#cfe0f5}
+.sub{color:var(--muted);font-size:13.5px;margin:0 0 8px}
+a{color:var(--green)}
+header{background:linear-gradient(135deg,#0A2540,#103a66);border:1px solid var(--line);border-radius:14px;padding:20px}
+.pill{display:inline-block;background:rgba(15,185,125,.16);color:var(--green);font-weight:700;font-size:11.5px;padding:3px 10px;border-radius:20px;margin-bottom:8px}
+.note{border-left:3px solid var(--amber);background:rgba(232,146,12,.08);padding:11px 14px;border-radius:8px;margin:12px 0;font-size:13.6px}
+.note.g{border-left-color:var(--green);background:rgba(15,185,125,.08)}
+.note.r{border-left-color:var(--red);background:rgba(224,86,63,.09)}
+ol,ul{margin:6px 0;padding-left:22px}li{margin:6px 0}
+code{background:#0a1120;padding:1px 6px;border-radius:4px;font-size:12.5px}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.2px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#101a2e;font-family:'Sora';font-size:12px}
+td b{color:#fff}
+.cb{position:relative;margin:10px 0}
+.copy{position:absolute;top:8px;right:8px;background:var(--green);color:#04241a;border:0;font-family:'Sora';font-weight:700;font-size:12px;padding:6px 12px;border-radius:7px;cursor:pointer}
+.copy:hover{background:#13d28e}.copy.done{background:var(--green-d);color:#fff}
+pre{margin:0;padding:14px 16px;background:#0a1120;border:1px solid var(--line);border-radius:10px;white-space:pre-wrap;word-break:break-word;font:12.5px/1.6 ui-monospace,Menlo,monospace;color:#dce7f7}
+/* faux Google Ads screen */
+.screen{background:#fff;color:#202124;border-radius:12px;border:1px solid #d9dde3;margin:12px 0 6px;overflow:hidden;box-shadow:0 6px 22px rgba(0,0,0,.28);font-size:13.5px}
+.scr-bar{background:#f1f3f4;border-bottom:1px solid #e2e5e9;padding:8px 14px;display:flex;align-items:center;gap:8px;font-size:12px;color:#5f6368}
+.scr-bar .dot{width:10px;height:10px;border-radius:50%;background:#dadce0}
+.scr-bar .path{margin-left:6px;font-weight:600;color:#3c4043}
+.scr-body{padding:16px 18px}
+.scr-title{font-family:'Sora';font-weight:700;font-size:15px;color:#202124;margin:0 0 12px}
+.field{margin:10px 0}
+.field label{display:block;font-size:11.5px;color:#5f6368;margin-bottom:3px}
+.field .inp{border:1px solid #bcc0c6;border-radius:6px;padding:9px 11px;background:#fff;font-size:13.5px;color:#202124}
+.field .inp.fill{border-color:var(--blue);box-shadow:0 0 0 2px rgba(26,115,232,.15);font-weight:600}
+.row2{display:flex;gap:12px;flex-wrap:wrap}.row2 .field{flex:1;min-width:150px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0}
+.chip{border:1px solid #bcc0c6;border-radius:8px;padding:8px 12px;font-size:12.5px;color:#3c4043;background:#fff}
+.chip.sel{border-color:var(--blue);background:#e8f0fe;color:#1558d6;font-weight:700}
+.gbtn{display:inline-block;background:var(--blue);color:#fff;border-radius:7px;padding:9px 16px;font-weight:600;font-size:13px;margin-top:8px}
+.gbtn.ghost{background:#fff;color:var(--blue);border:1px solid #bcc0c6}
+.tog{display:inline-flex;align-items:center;gap:8px;font-size:13px}
+.sw{width:34px;height:18px;border-radius:20px;background:var(--green);position:relative}.sw::after{content:"";position:absolute;right:2px;top:2px;width:14px;height:14px;border-radius:50%;background:#fff}
+.b{display:inline-block;min-width:20px;height:20px;line-height:20px;text-align:center;background:var(--red);color:#fff;border-radius:50%;font-size:12px;font-weight:700;font-family:'Sora';margin-right:6px}
+.anno{font-size:13px;margin:4px 0 0;color:var(--text)}
+.cap{font-size:12px;color:var(--muted);margin:2px 0 16px}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:24px 0 0;margin-top:24px;border-top:1px solid var(--line)}
+</style></head><body><div class="wrap">
+
+<header>
+<span class="pill">TEAM GUIDE · GOOGLE ADS CONVERSIONS</span>
+<h1>🎯 Create the Conversion Actions</h1>
+<p class="sub">Exact click-by-click setup for account <b>GCALIT x LendPeak (720-674-6191)</b>. The screens below are annotated mockups of the real Google Ads flow — type the highlighted values exactly. Do this once; the naming is built so future lead uploads "just work."</p>
+</header>
+
+<div class="note g"><b>The most-efficient setup = just 2 conversion actions.</b> <code>Lead</code> (from the website) to optimize on at launch, and <code>Funded Deal</code> (uploaded from GoHighLevel) which becomes the money goal later. One Google Sheet feeds all future uploads. Don't create duplicates — extra actions split your data and slow learning.</div>
+
+<h2>⭐ Naming convention — read this first (it's the whole trick)</h2>
+<p class="sub">When you upload leads/deals later, Google matches each row to a conversion action <b>by its name, character-for-character</b>. So we lock simple, exact names now and never rename them:</p>
+<table>
+<tr><th>Conversion action name</th><th>Category</th><th>How it's recorded</th><th>Value</th><th>Role</th></tr>
+<tr><td><b>Lead</b></td><td>Submit lead form</td><td>Website (Google tag)</td><td>No value</td><td>Primary at launch</td></tr>
+<tr><td><b>Funded Deal</b></td><td>Converted lead</td><td>Import (uses GCLID)</td><td>Use different values (USD)</td><td>Secondary → Primary later</td></tr>
+<tr><td><b>Qualified Lead</b> <span style="color:var(--muted)">(optional)</span></td><td>Qualified lead</td><td>Import (uses GCLID)</td><td>No value</td><td>Secondary signal</td></tr>
+</table>
+<div class="note r"><b>Rules that prevent broken uploads:</b> names are <b>case-sensitive</b> and must match the upload sheet's "Conversion Name" exactly (<code>Funded Deal</code> ≠ <code>funded deal</code> ≠ <code>Funded&nbsp;&nbsp;Deal</code>). No trailing spaces. <b>Never rename</b> an action after go-live, and never delete + recreate (make a new name instead).</div>
+
+<h2>Part A · Create the "Lead" web conversion</h2>
+
+<h3>Step A1 — Open Conversions</h3>
+<div class="screen"><div class="scr-bar"><span class="dot"></span><span class="dot"></span><span class="path">Google Ads ▸ Goals ▸ Conversions ▸ Summary</span></div>
+<div class="scr-body"><p class="scr-title">Conversions</p>
+<span class="gbtn">+ New conversion action</span></div></div>
+<p class="anno"><span class="b">1</span>Top-left <b>Tools / Goals</b> menu → <b>Conversions</b> → <b>Summary</b> → click <b>+ New conversion action</b>.</p>
+<p class="cap">If a "Goals" item isn't visible, use <b>Tools (wrench icon) → Measurement → Conversions</b>.</p>
+
+<h3>Step A2 — Pick the source: Website</h3>
+<div class="screen"><div class="scr-bar"><span class="dot"></span><span class="path">New conversion action</span></div>
+<div class="scr-body"><p class="scr-title">What do you want to track?</p>
+<div class="chips"><span class="chip sel">🌐 Website</span><span class="chip">📱 App</span><span class="chip">📞 Phone calls</span><span class="chip">⬆ Import</span></div>
+<div class="field"><label>Your website</label><div class="inp fill">lendpeak.com</div></div>
+<span class="gbtn">Scan</span> <span class="gbtn ghost">+ Add a conversion action manually</span></div></div>
+<p class="anno"><span class="b">2</span>Choose <b>Website</b>, type <code>lendpeak.com</code>, then click <b>+ Add a conversion action manually</b> (don't rely on the auto-scan — we want a clean, named action).</p>
+
+<h3>Step A3 — Settings for the "Lead" action</h3>
+<div class="screen"><div class="scr-bar"><span class="path">New conversion action ▸ Settings</span></div>
+<div class="scr-body">
+<div class="field"><label>Goal and action optimization (category)</label><div class="inp fill">Leads → Submit lead form</div></div>
+<div class="field"><label>Conversion name</label><div class="inp fill">Lead</div></div>
+<div class="row2">
+<div class="field"><label>Value</label><div class="inp fill">Don't use a value for this conversion action</div></div>
+<div class="field"><label>Count</label><div class="inp fill">One</div></div>
+</div>
+<div class="row2">
+<div class="field"><label>Click-through conversion window</label><div class="inp fill">90 days</div></div>
+<div class="field"><label>Attribution model</label><div class="inp">Data-driven</div></div>
+</div>
+<div class="field"><label>Enhanced conversions</label><div class="tog"><span class="sw"></span> <b>On</b> — set up via <b>Google tag</b></div></div>
+<span class="gbtn">Done → Save</span></div></div>
+<p class="anno"><span class="b">3</span>Enter exactly: Category <b>Submit lead form</b> · Name <b>Lead</b> · Value <b>Don't use a value</b> · Count <b>One</b> (one per click — this is lead-gen, not e-commerce) · Window <b>90 days</b> (MCA sales cycles are long) · <b>Enhanced conversions ON</b> via Google tag. Save.</p>
+
+<h3>Step A4 — Grab the tag snippet for the web team</h3>
+<div class="screen"><div class="scr-bar"><span class="path">Lead ▸ Tag setup</span></div>
+<div class="scr-body"><p class="scr-title">Use the Google tag — Event snippet</p>
+<div class="field"><div class="inp">send_to: 'AW-XXXXXXXXX/XXXXXXXXXXXXXXXX'</div></div>
+<span class="gbtn ghost">Copy snippet</span></div></div>
+<p class="anno"><span class="b">4</span>Open the new <b>Lead</b> action → <b>Tag setup</b> → copy the <code>send_to</code> value (<code>AW-…/label</code>) and give it to the web team for snippet 1.3 in the <a href="../tracking-spec/">tracking spec</a>. Mark <b>Lead</b> as a <b>Primary</b> action.</p>
+
+<h2>Part B · Create the "Funded Deal" upload conversion</h2>
+
+<h3>Step B1 — New action → Import</h3>
+<div class="screen"><div class="scr-bar"><span class="path">New conversion action</span></div>
+<div class="scr-body"><p class="scr-title">What do you want to track?</p>
+<div class="chips"><span class="chip">🌐 Website</span><span class="chip">📱 App</span><span class="chip">📞 Phone calls</span><span class="chip sel">⬆ Import</span></div>
+<p class="scr-title" style="margin-top:14px;font-size:13px">Select source</p>
+<div class="chips"><span class="chip sel">CRMs, files, or other data sources</span></div>
+<div class="chips"><span class="chip sel">Track conversions from clicks (uses Google Click ID / GCLID)</span></div>
+<span class="gbtn">Continue</span></div></div>
+<p class="anno"><span class="b">5</span><b>+ New conversion action → Import → CRMs, files, or other data sources → Track conversions from clicks (GCLID)</b>. This is the gclid-based path that matches the codes GoHighLevel saved.</p>
+
+<h3>Step B2 — Settings for "Funded Deal"</h3>
+<div class="screen"><div class="scr-bar"><span class="path">Import conversion ▸ Settings</span></div>
+<div class="scr-body">
+<div class="field"><label>Goal and action optimization (category)</label><div class="inp fill">Leads → Converted lead</div></div>
+<div class="field"><label>Conversion name</label><div class="inp fill">Funded Deal</div></div>
+<div class="row2">
+<div class="field"><label>Value</label><div class="inp fill">Use different values for each conversion</div></div>
+<div class="field"><label>Default currency</label><div class="inp fill">USD</div></div>
+</div>
+<div class="row2">
+<div class="field"><label>Count</label><div class="inp fill">One</div></div>
+<div class="field"><label>Click-through conversion window</label><div class="inp fill">90 days</div></div>
+</div>
+<span class="gbtn">Done → Save</span></div></div>
+<p class="anno"><span class="b">6</span>Category <b>Converted lead</b> · Name <b>Funded Deal</b> · Value <b>Use different values</b>, currency <b>USD</b> (funded amounts vary) · Count <b>One</b> · Window <b>90 days</b>. Set it <b>Secondary</b> for now (we bid on Lead first, switch to Funded Deal once it has data).</p>
+
+<h2>Part C · Connect the Google Sheet (the upload pipe)</h2>
+<h3>Step C1 — Create the upload from Google's template</h3>
+<div class="screen"><div class="scr-bar"><span class="path">Goals ▸ Conversions ▸ Uploads</span></div>
+<div class="scr-body"><p class="scr-title">Uploads → Schedule an upload</p>
+<div class="field"><label>Source</label><div class="inp fill">Google Sheets</div></div>
+<span class="gbtn ghost">Make a copy of the Google template</span>
+<div class="field" style="margin-top:12px"><label>Upload frequency</label><div class="inp fill">Daily</div></div>
+<span class="gbtn">Save schedule</span></div></div>
+<p class="anno"><span class="b">7</span><b>Conversions → Uploads → + → Google Sheets → "Make a copy of the template."</b> Google creates a correctly-formatted Sheet. Set frequency to <b>Daily</b>. <b>This is the one Sheet GoHighLevel writes funded deals into</b> — efficient: one pipe, auto-imports every day.</p>
+
+<h3>Step C2 — The Sheet format (give this to the GHL team)</h3>
+<p class="sub">In the template, set the timezone to match the account, then GHL appends one row per funded deal:</p>
+<div class="cb"><button class="copy" data-t="sheet">Copy</button><pre id="sheet">Row 1 (parameters):  Parameters:TimeZone=America/New_York
+
+Header row + columns GHL fills:
+Google Click ID      -> {{contact.gclid}}
+Conversion Name      -> Funded Deal          (must match the action name EXACTLY)
+Conversion Time      -> 2026-06-26 15:30:00   (yyyy-MM-dd HH:mm:ss, Eastern)
+Conversion Value     -> 25000                 (the funded amount, number only)
+Conversion Currency  -> USD</pre></div>
+<div class="note">For a <code>Qualified Lead</code> upload later, GHL writes the same row but with <b>Conversion Name = Qualified Lead</b>. Same Sheet, same pipe — that's why the naming had to be locked first.</div>
+
+<h2>Part D · Point the campaign at the right goal</h2>
+<ol>
+<li><b>Goals → Conversions → Summary:</b> confirm <b>Lead = Primary</b>, <b>Funded Deal = Secondary</b>.</li>
+<li>In the campaign → <b>Settings → Conversion goals</b> → use <b>account-default</b> (so it optimizes to <b>Lead</b> now).</li>
+<li>Once <b>Funded Deal</b> has ~15–30 imports, flip it to <b>Primary</b> and bid to it (Target CPA / Max Conversion Value). That's when Google starts optimizing to real money.</li>
+</ol>
+
+<h2>✅ Verify before unpausing</h2>
+<ol>
+<li>Submit a test lead with <code>?gclid=TEST123</code> → the <b>Lead</b> action shows "Recording conversions" in Tag Assistant.</li>
+<li>Add a test row to the Sheet (gclid <code>TEST123</code>, name <code>Funded Deal</code>) → next day it imports with no errors.</li>
+<li>Delete test data → unpause and scale.</li>
+</ol>
+
+<footer>LendPeak / GCALIT x LendPeak (720-674-6191) · conversion-action setup · Eastern time · 2026-06-26</footer>
+</div>
+<script>
+(function(){
+function flash(b,ok){if(!b.dataset.o)b.dataset.o=b.textContent;b.textContent=ok?'Copied ✓':'Press Ctrl/⌘-C';b.classList.toggle('done',ok);setTimeout(function(){b.textContent=b.dataset.o;b.classList.remove('done')},1600);}
+function legacy(t,el){try{var ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.focus();ta.select();try{ta.setSelectionRange(0,t.length)}catch(e){}var ok=false;try{ok=document.execCommand('copy')}catch(e){ok=false}document.body.removeChild(ta);if(!ok&&el){try{var r=document.createRange();r.selectNodeContents(el);var s=window.getSelection();s.removeAllRanges();s.addRange(r)}catch(e){}}return ok;}catch(e){return false}}
+function go(b){var el=document.getElementById(b.dataset.t);if(!el){flash(b,false);return}var t=el.innerText;if(navigator.clipboard&&navigator.clipboard.writeText&&window.isSecureContext){navigator.clipboard.writeText(t).then(function(){flash(b,true)}).catch(function(){flash(b,legacy(t,el))})}else{flash(b,legacy(t,el))}}
+document.addEventListener('click',function(e){var b=e.target.closest('.copy');if(b)go(b)});
+})();
+</script></body></html>
