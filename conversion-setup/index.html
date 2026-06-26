@@ -162,6 +162,12 @@ Conversion Value     -> 25000                 (the funded amount, number only)
 Conversion Currency  -> USD</pre></div>
 <div class="note">For a <code>Qualified Lead</code> upload later, GHL writes the same row but with <b>Conversion Name = Qualified Lead</b>. Same Sheet, same pipe — that's why the naming had to be locked first.</div>
 
+<h2>Part C2 · ValueTrack — Final URL suffix <span style="font-size:11px;color:var(--muted)">(marketing/our side, in Google Ads)</span></h2>
+<p class="sub">So Leo's team can save <b>which campaign / ad group / keyword / device</b> drove each lead, we append ValueTrack values to every click URL. (<code>gclid</code> is added automatically by auto-tagging — confirm <b>Account settings → Auto-tagging = ON</b>.) Set this once:</p>
+<p class="sub"><b>Campaign <code>LP | MCA | Search | US</code> → Settings → Additional settings → Campaign URL options → Final URL suffix</b>, paste:</p>
+<div class="cb"><button class="copy" data-t="suffix">Copy</button><pre id="suffix">utm_source=google&amp;utm_medium=cpc&amp;campaignid={campaignid}&amp;adgroupid={adgroupid}&amp;keyword={keyword}&amp;matchtype={matchtype}&amp;device={device}&amp;network={network}&amp;creative={creative}</pre></div>
+<div class="note">Google swaps each <code>{…}</code> for the real value at click time, e.g. <code>?gclid=Cj0K…&amp;campaignid=2231&amp;keyword=merchant%20cash%20advance&amp;matchtype=e&amp;device=m</code>. Leo's team's snippet (their setup page) reads these exact names into the lead form. <b>The field names here must match their hidden-field names character-for-character</b> — they do. Click <b>Test</b> in the URL-options box to confirm the page still loads with the suffix.</div>
+
 <h2>Part D · Point the campaign at the right goal</h2>
 <ol>
 <li><b>Goals → Conversions → Summary:</b> confirm <b>Lead = Primary</b>, <b>Funded Deal = Secondary</b>.</li>
